@@ -44,7 +44,7 @@
                                          Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalPasswordBox}"/>
                         </Grid>
 
-                        <Button Name="SignButton" Content="Přihlásit" Command="{Binding LoginCommand}"
+                        <Button Click="SignButton_Click" Name="SignButton" Content="Přihlásit" Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=Page}"
                                 Style="{StaticResource SignButton}"  Margin="0 20 0 0"/>
 

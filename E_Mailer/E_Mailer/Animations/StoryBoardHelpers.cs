@@ -18,6 +18,7 @@ namespace E_Mailer.Animations
 {
     public static class StoryBoardHelpers
     {
+        /*
         /// <summary>
         /// Adds a slide from top animation to the storyboard
         /// </summary>
@@ -84,7 +85,8 @@ namespace E_Mailer.Animations
             var animation = new ThicknessAnimation
             {
                 Duration = new Duration(TimeSpan.FromSeconds(seconds)),
-                From = new Thickness(0, keepMargin ? offset : 0, 0, -offset),
+                //From = new Thickness(0, keepMargin ? offset : 0, 0, -offset),
+                From = new Thickness(0, 0, 0, -offset),
                 To = new Thickness(0),
                 DecelerationRatio = decelerationRatio
             };
@@ -121,55 +123,54 @@ namespace E_Mailer.Animations
             // Add this to the storyboard
             storyboard.Children.Add(animation);
         }
-
-        #region Fade In/Out
+        */
 
         /// <summary>
-        /// Adds a fade in animation to the storyboard
+        /// Add verticaly slide. 
+        /// If slideIn = true, it will slide to middle. Else it slide out.
+        /// If bottomDirection = true, it will slide (to/ from) bottom. Else from top.
         /// </summary>
-        /// <param name="storyboard">The storyboard to add the animation to</param>
-        /// <param name="seconds">The time the animation will take</param>
-        public static void AddFadeIn(this Storyboard storyboard, float seconds, bool from = false)
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
+        /// <param name="offset"></param>
+        /// <param name="slideIn"></param>
+        /// <param name="bottomDirection"></param>
+        public static void AddSlideVerticaly(this Storyboard storyboard, float seconds, double offset, bool slideIn, bool bottomDirection)
         {
-            // Create the margin animate from right 
+            double o = bottomDirection ? -offset : offset;
+
+            var animation = new ThicknessAnimation
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = new Thickness(0, 0, 0, slideIn ? o : 0),
+                To = new Thickness(0, 0, 0, slideIn ? 0 : o),
+                DecelerationRatio = 0.9f
+            };
+
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+            storyboard.Children.Add(animation);
+        }
+
+
+        /// <summary>
+        /// Add fade effect to the storyboard (fade in - appear - true/ fade out - disappear - false)
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="FadeIn"></param>
+        /// <param name="seconds"></param>
+        public static void AddFadeEffect(this Storyboard storyboard, bool FadeIn, float seconds)
+        {
             var animation = new DoubleAnimation
             {
                 Duration = new Duration(TimeSpan.FromSeconds(seconds)),
-                To = 1,
+                To = FadeIn ? 1 :0,
             };
 
-            // Animate from if requested
-            if (from)
+            if (FadeIn)
                 animation.From = 0;
 
-            // Set the target property name
             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
-
-            // Add this to the storyboard
             storyboard.Children.Add(animation);
         }
-
-        /// <summary>
-        /// Adds a fade out animation to the storyboard
-        /// </summary>
-        /// <param name="storyboard">The storyboard to add the animation to</param>
-        /// <param name="seconds">The time the animation will take</param>
-        public static void AddFadeOut(this Storyboard storyboard, float seconds)
-        {
-            // Create the margin animate from right 
-            var animation = new DoubleAnimation
-            {
-                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
-                To = 0,
-            };
-
-            // Set the target property name
-            Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
-
-            // Add this to the storyboard
-            storyboard.Children.Add(animation);
-        }
-
-        #endregion
     }
 }

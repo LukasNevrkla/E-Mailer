@@ -27,15 +27,11 @@ namespace E_Mailer
             SetButton();
         }
 
-        private void password_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            SetButton();
-        }
+        #region ButtonHelpers
 
-        private void email_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            SetButton();
-        }
+        //To enable login button only if are there necessary datas
+        private void password_PasswordChanged(object sender, RoutedEventArgs e) => SetButton();
+        private void email_TextChanged(object sender, TextChangedEventArgs e) => SetButton();
 
         void SetButton()
         {
@@ -43,20 +39,16 @@ namespace E_Mailer
             SignButton.IsEnabled = enable;
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            (App.Current as App).ChangeTheme(Theme.Red);
-        }
+        #endregion
 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            (App.Current as App).ChangeTheme(Theme.Black);
-        }
-        /*
+        private void CheckBox_Checked(object sender, RoutedEventArgs e) => (App.Current as App).ChangeTheme(Theme.Red);
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e) => (App.Current as App).ChangeTheme(Theme.Black);
+
+        
         private void SignButton_Click(object sender, RoutedEventArgs e)
         {
             this.AnimateOutAsync();
-        }*/
+        }
 
         public SecureString SecurePassword => PasswordBoxText.SecurePassword;
     }

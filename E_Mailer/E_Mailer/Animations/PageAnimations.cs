@@ -17,13 +17,10 @@ using System.Windows.Shapes;
 
 namespace E_Mailer.Animations
 {
-    /// <summary>
-    /// Helpers to animate pages in specific ways
-    /// </summary>
     public static class PageAnimations
     {
         /// <summary>
-        /// Slides a page in from the right
+        /// Slides a page in from the bottom
         /// </summary>
         /// <param name="page">The page to animate</param>
         /// <param name="seconds">The time the animation will take</param>
@@ -34,10 +31,11 @@ namespace E_Mailer.Animations
             var sb = new Storyboard();
 
             // Add slide from right animation
-            sb.AddSlideFromBottom(seconds, page.WindowHeight);
+            //sb.AddSlideFromBottom(seconds, page.WindowHeight);
+            sb.AddSlideVerticaly(seconds, page.WindowHeight, true, true);
 
             // Add fade in animation
-            sb.AddFadeIn(seconds,true);
+            sb.AddFadeEffect(true, seconds);
 
             // Start animating
             sb.Begin(page);
@@ -61,10 +59,11 @@ namespace E_Mailer.Animations
             var sb = new Storyboard();
 
             // Add slide from right animation
-            sb.AddSlideToBottom(seconds, page.WindowHeight);
+           // sb.AddSlideToBottom(seconds, page.WindowHeight);
+            sb.AddSlideVerticaly(seconds, page.WindowHeight, false, true);
 
             // Add fade in animation
-            sb.AddFadeOut(seconds/3);
+            sb.AddFadeEffect(false, seconds / 3);
 
             // Start animating
             sb.Begin(page);
