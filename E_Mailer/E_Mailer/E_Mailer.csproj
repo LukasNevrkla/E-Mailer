@@ -70,8 +70,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AttachedProperties\PasswordBoxProperties.cs" />
+    <Compile Include="Animations\PageAnimation.cs" />
+    <Compile Include="Animations\PageAnimations.cs" />
+    <Compile Include="Animations\StoryBoardHelpers.cs" />
+    <Compile Include="AttachedProperties\BaseAttachedProperties.cs" />
+    <Compile Include="AttachedProperties\PasswordBoxProperty.cs" />
+    <Compile Include="Security\SecureStringHelpers.cs" />
+    <Compile Include="ValueConventers\BooleanToVisiblityConverter.cs" />
     <Compile Include="DataModel\ApplicationPages.cs" />
+    <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -79,7 +86,10 @@
     <Compile Include="ValueConventers\BaseValueConventer.cs" />
     <Compile Include="ValueConventers\PageConventer.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Base\IHavePassword.cs" />
+    <Compile Include="ViewModel\Base\ParameterizedRelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ChceckBoxes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,6 +147,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -164,6 +182,18 @@
   <ItemGroup>
     <Resource Include="Images\Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\stažený soubor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Title_black_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Title_light_red.png" />
+    <Resource Include="Images\Title_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Title_white.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

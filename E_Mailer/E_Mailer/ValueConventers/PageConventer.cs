@@ -15,7 +15,7 @@ namespace E_Mailer
             switch ((ApplicationPages)value)
             {
                 case ApplicationPages.Login:
-                    return new Pages.LoginPage();
+                    return new LoginPage();  //Pages.
 
                 default:
                     Debugger.Break();

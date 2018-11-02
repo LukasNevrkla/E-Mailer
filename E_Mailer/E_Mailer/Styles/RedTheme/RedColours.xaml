@@ -12,10 +12,12 @@
     <SolidColorBrush x:Key="TextBoxBrush" Color="GhostWhite"/>
     <SolidColorBrush x:Key="TextBoxSelectionBrush" Color="Red"/>
 
+    <BitmapImage x:Key="TitleBar" UriSource="../../Images/Title_black_red.png"/>
+
 
     <!--#region MainBackground-->
-    <Color x:Key="MainBackground_1">#FF270000</Color>
-    <Color x:Key="MainBackground_2">#FF4F0101</Color>
+    <Color x:Key="MainBackground_1">#FF100000</Color>
+    <Color x:Key="MainBackground_2">#FF100101</Color>
 
     <LinearGradientBrush x:Key="MainBackground" EndPoint="1,0.5" MappingMode="RelativeToBoundingBox" StartPoint="0,0.5" Opacity="0.9">
         <GradientStop Color="{DynamicResource MainBackground_1}" Offset="0"/>
@@ -45,7 +47,7 @@
     <Color x:Key="SelectedBackground_2">#FFA00202</Color>
 
     <RadialGradientBrush x:Key="SelectedBackground" MappingMode="RelativeToBoundingBox">
-        <GradientStop Color="{DynamicResource HeaderBackground_2}" Offset="1"/>
+        <GradientStop Color="#FF360000" Offset="1"/>
         <GradientStop Color="{DynamicResource SelectedBackground_2}" Offset="0"/>
     </RadialGradientBrush>
     <!--#endregion-->

@@ -21,90 +21,59 @@
                     <ControlTemplate TargetType="{x:Type Window}">
                         <Border Padding="{Binding OuterMarginThickness, FallbackValue=10}">
                             <Grid>
-                                
                                 <!-- CornerRadius = round window shape -->
-                                <Border Background="{DynamicResource FrameBackground}" 
-                                        CornerRadius="{Binding WindowCornerRadius, FallbackValue=20}">
+                                <Border Background="{DynamicResource MainBackground}" CornerRadius="20">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
                                     </Border.Effect>
                                 </Border>
 
-                                <Grid Margin="{Binding InnerMarginSize, FallbackValue=5}">
+                                <!--Window content-->
+                                <Border Padding="2" >
+                                    <ContentPresenter Content="{TemplateBinding Content}"/>
+                                </Border>
 
-                                    <Grid.RowDefinitions>
-
-                                        <!--Title bar-->
-                                        <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}"/>
-
-                                        <!--Drop shadow-->
-                                        <RowDefinition Height="Auto"/>
-
-                                        <!--Window content-->
-                                        <RowDefinition Height="*"/>
-
-                                    </Grid.RowDefinitions>
-                                    
-                                    <!--Title bar-->
-                                    <Grid Grid.Column="0" Panel.ZIndex="1">
-
-                                        <!-- Opacity mask for corners on grid -->
-                                        <Border x:Name="Container"
-                                        Background="{DynamicResource HeaderBackground}"
-                                        CornerRadius="{Binding WindowCornerRadius, FallbackValue=20}" />
-
-                                        <Border Background="{DynamicResource HeaderBackground}" 
-                                        CornerRadius="{Binding WindowCornerRadius, FallbackValue=20}">
-                                            <Border.Effect>
-                                                <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
-                                            </Border.Effect>
-                                        </Border>
-                                        
-                                        <Grid>
-
-                                            <Grid.OpacityMask>
-                                                <VisualBrush Visual="{Binding ElementName=Container}"/>
-                                            </Grid.OpacityMask>
-
-                                            <Grid.ColumnDefinitions>
-                                                <!--Icon-->
-                                                <ColumnDefinition Width="AUTO"/>
-                                                <!--Title-->
-                                                <ColumnDefinition Width="*"/>
-                                                <!--Button-->
-                                                <ColumnDefinition Width="AUTO"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <Button Style="{StaticResource SystemButton}" Command="{Binding MenuCommand}">
-                                                <Image Source="Images/Icon.ico"/>
-                                            </Button>
-
-                                            <Viewbox Grid.Column="1" Margin="0">
-                                                <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='E-Mailer'}"
-                                                       Style="{StaticResource BaseStyleBlock}"/>
-                                            </Viewbox>
-
-                                            <StackPanel Grid.Column="2" Orientation="Horizontal">
-                                                <Button Content="-" Command="{Binding MinimaliseCommand}" Style="{StaticResource WindowControlButton}"/>
-                                                <Button Content="[ ]" Command="{Binding MaximaliseCommand}" Style="{StaticResource WindowControlButton}"/>
-                                                <Button Content="X" Command="{Binding CloseCommand}" Style="{StaticResource WindowControlButton}"/>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-
-                                    <!--Drop shadow-->
-                                    <Border Grid.Row="1" Height="6" BorderThickness="0 0.2 0 0"/>
-                                    
-                                    <!--Window content-->
-                                    <Border Grid.Row="2" Padding="2" Background="{DynamicResource MainBackground}"
-                                            
-                                            CornerRadius="{Binding WindowCornerRadius, FallbackValue=20}">
-                                        <ContentPresenter Content="{TemplateBinding Content}"/>
-
-                                        <Border.Effect>
-                                            <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
-                                        </Border.Effect>
+                                <!--Title bar-->
+                                <Grid VerticalAlignment="Top" HorizontalAlignment="Right">
+                                    <Border Name="Mask" CornerRadius="0,20,0,0" 
+                                            Background="{DynamicResource MainBackground}">
                                     </Border>
+
+                                    <Grid MouseDown="Grid_MouseDown" PreviewMouseMove="Button_PreviewMouseMove" 
+                                              Height="45" Width="600">
+
+                                        <Grid.Background>
+                                            <ImageBrush ImageSource="{DynamicResource TitleBar}"/>
+                                        </Grid.Background>
+
+                                        <Grid.OpacityMask>
+                                            <VisualBrush Visual="{Binding ElementName=Mask}"/>
+                                        </Grid.OpacityMask>
+
+                                        <Grid.ColumnDefinitions>
+                                            <!--Icon-->
+                                            <ColumnDefinition Width="*"/>
+                                            <!--Title-->
+                                            <ColumnDefinition Width="4*"/>
+                                            <!--Space-->
+                                            <ColumnDefinition Width="8*"/>
+                                            <!--Buttons-->
+                                            <ColumnDefinition Width="2.75*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image Source="Images/Icon.ico" Margin="10,0,0,0"/>
+
+                                        <Viewbox Grid.Column="1">
+                                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='E-Mailer'}"
+                                                       Style="{StaticResource BaseStyleBlock}"/>
+                                        </Viewbox>
+
+                                        <StackPanel Grid.Column="3" Orientation="Horizontal" Height="39" VerticalAlignment="Top">
+                                            <Button Content="-" Command="{Binding MinimaliseCommand}" Style="{StaticResource WindowControlButton}"/>
+                                            <Button Content="[ ]" Command="{Binding MaximaliseCommand}" Style="{StaticResource WindowControlButton}" />
+                                            <Button Content="X" Command="{Binding CloseCommand}" Style="{StaticResource WindowControlButton}"/>
+                                        </StackPanel>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Border>
@@ -112,17 +81,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Window.Resources>
-    
+
     <WindowChrome.WindowChrome>
         <WindowChrome 
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
-            CaptionHeight="{Binding CaptionHeight}"
+            CaptionHeight="0"
             CornerRadius="0"
-            GlassFrameThickness="0"
+            GlassFrameThickness="0"           
             />
     </WindowChrome.WindowChrome>
-
 
     <Grid>
         <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />

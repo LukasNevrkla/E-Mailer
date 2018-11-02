@@ -11,8 +11,9 @@
                 <ResourceDictionary Source="Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="Styles/Texts.xaml"/>
                 <ResourceDictionary Source="Styles/Fonts.xaml"/>
+                <ResourceDictionary Source="Styles/WindowStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ChceckBoxes.xaml"/>
 
-                
 
                 <local:ThemeResourcesDictionary RedSource="Styles/RedTheme/RedColours.xaml" 
                                                 BlackSource="Styles/BlackTheme/BlackColours.xaml" />

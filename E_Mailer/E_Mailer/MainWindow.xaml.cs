@@ -26,5 +26,24 @@ namespace E_Mailer
 
             this.DataContext = new WindowViewModel(this);
         }
+
+
+        private bool x = false;
+        private void Button_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            if(x==true)
+            {
+                try
+                { DragMove(); }
+                catch { }
+
+                x = false;
+            }
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            x = true;
+        }
     }
 }
