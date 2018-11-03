@@ -4,7 +4,6 @@
 
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Colours.xaml"/>
         <ResourceDictionary Source="Fonts.xaml"/>
         <ResourceDictionary Source="Texts.xaml"/>
     </ResourceDictionary.MergedDictionaries>
@@ -27,8 +26,8 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region SystemButton-->
-    <Style TargetType="{x:Type Button}" x:Key="SystemButton" BasedOn="{StaticResource Hoverless}">
+    <!--#region IconButton-->
+    <Style TargetType="{x:Type Button}" x:Key="IconButton" BasedOn="{StaticResource Hoverless}">
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="Padding" Value="5"/>
     </Style>
@@ -42,7 +41,6 @@
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Foreground" Value="{DynamicResource TextForeground}"/>
         
-
         <Setter Property="LayoutTransform">
             <Setter.Value>
                 <ScaleTransform ScaleX="1.5" />
@@ -51,55 +49,15 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource SelectedBackground}" />
-                <Setter Property="Foreground" Value="{DynamicResource SelectedForeground}" />
+                <Setter Property="Background" Value="{DynamicResource WinButtonSelectedBackground}" />
             </Trigger>
         </Style.Triggers>
 
     </Style>
-    <!--#endregion-->
-
-    <!--#region Window Control Button-->
-   <!-- <Style TargetType="{x:Type Button}" x:Key="SignButton" BasedOn="{StaticResource Hoverless}">
-        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Padding" Value="8" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="Foreground" Value="{DynamicResource TextForeground}"/>
-        
-
-        <Setter Property="LayoutTransform">
-            <Setter.Value>
-                <ScaleTransform ScaleX="1.5" />
-            </Setter.Value>
-        </Setter>
-
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
-                        <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                                   Style="{StaticResource BaseStyleBlock}"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource LogSelectedBackground}" />
-                <Setter Property="Foreground" Value="{DynamicResource SelectedForeground}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    
-    <ControlTemplate x:Key="SignButton_1" TargetType="{x:Type Button}">
-        <Grid/>
-    </ControlTemplate>
-    -->
     <!--#endregion-->
 
     <!--#region SignButton-->
+    
     <Style x:Key="SignButton" TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}">
         <Setter Property="Background" Value="{DynamicResource DeactiveLogButtonBackground}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
@@ -108,8 +66,6 @@
         <Setter Property="FontFamily" Value="{StaticResource ButtonFont}" />
         <Setter Property="Padding" Value="50 10" />
         <Setter Property="Margin" Value="0 10" />
-
-        <Setter Property="local:IsBusyProperty.Value" Value="false"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -150,7 +106,6 @@
                             <Setter Property="Background" Value="{DynamicResource SelectedLogButtonBackground}"/>
                         </Trigger>
 
-
                         <DataTrigger Binding="{Binding LoginIsRunning}" Value="true">
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard>
@@ -180,7 +135,6 @@
         </Setter>
     </Style>
 
-   
-
     <!--#endregion-->
+    
 </ResourceDictionary>

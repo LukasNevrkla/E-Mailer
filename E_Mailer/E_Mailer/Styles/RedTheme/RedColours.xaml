@@ -2,18 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:E_Mailer.Styles.RedTheme">
 
- 
-    <SolidColorBrush x:Key="TextForeground" Color="White"/>
     
-    <SolidColorBrush x:Key="SelectedForeground" Color="GhostWhite"/>
-    <SolidColorBrush x:Key="UnEnableForeground" Color="Gray"/>
-
-    <SolidColorBrush x:Key="LogSelectedBackground" Color="GhostWhite"/>
-    <SolidColorBrush x:Key="TextBoxBrush" Color="GhostWhite"/>
-    <SolidColorBrush x:Key="TextBoxSelectionBrush" Color="Red"/>
-
-    <BitmapImage x:Key="TitleBar" UriSource="../../Images/Title_black_red.png"/>
-
+    
+    <!--#region Main window-->
 
     <!--#region MainBackground-->
     <Color x:Key="MainBackground_1">#FF100000</Color>
@@ -25,10 +16,26 @@
     </LinearGradientBrush>
     <!--#endregion-->
 
+    <!--#region WinButtonSelectedBackground-->
+    <Color x:Key="WinButtonSelectedBackground_1">#FF3C0101</Color>
+    <Color x:Key="WinButtonSelectedBackground_2">#FFA00202</Color>
+
+    <RadialGradientBrush x:Key="WinButtonSelectedBackground" MappingMode="RelativeToBoundingBox">
+        <GradientStop Color="#FF360000" Offset="1"/>
+        <GradientStop Color="{DynamicResource WinButtonSelectedBackground_2}" Offset="0"/>
+    </RadialGradientBrush>
+    <!--#endregion-->
+
+    <BitmapImage x:Key="TitleBar" UriSource="../../Images/Title_black_red.png"/>
+
+    <!--#endregion-->
+    
+    <!--#region Log screen-->
+
     <!--#region LogScreenBackground-->
     <SolidColorBrush x:Key="LogScreenBackground" Color="#FF210000"/>
     <!--#endregion-->
-    
+
     <!--#region LogButtonBackground-->
     <Color x:Key="SelectedLogButtonBackground1">#FF63BB5F</Color>
     <Color x:Key="SelectedLogButtonBackground2">#FF056E00</Color>
@@ -42,15 +49,16 @@
     <SolidColorBrush x:Key="DeactiveLogButtonBackground" Color="#FF953D00"/>
     <!--#endregion-->
 
-    <!--#region SelectedBackground-->
-    <Color x:Key="SelectedBackground_1">#FF3C0101</Color>
-    <Color x:Key="SelectedBackground_2">#FFA00202</Color>
-
-    <RadialGradientBrush x:Key="SelectedBackground" MappingMode="RelativeToBoundingBox">
-        <GradientStop Color="#FF360000" Offset="1"/>
-        <GradientStop Color="{DynamicResource SelectedBackground_2}" Offset="0"/>
-    </RadialGradientBrush>
     <!--#endregion-->
+    
+    <!--#region Texts-->
+
+    <SolidColorBrush x:Key="TextForeground" Color="White"/>
+
+    <!--#endregion-->
+
+
+    <!--#region Old window-->
 
     <!--#region FrameBackground-->
     <Color x:Key="FrameBackground_1">#FF160000</Color>
@@ -70,6 +78,8 @@
         <GradientStop Color="{DynamicResource HeaderBackground_1}" Offset="0"/>
         <GradientStop Color="{DynamicResource HeaderBackground_2}" Offset="1"/>
     </LinearGradientBrush>
+    <!--#endregion-->
+
     <!--#endregion-->
 
 </ResourceDictionary>

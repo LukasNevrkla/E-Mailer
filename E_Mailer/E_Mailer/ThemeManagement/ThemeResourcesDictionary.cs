@@ -30,7 +30,18 @@ namespace E_Mailer
 
         public void UpdateSource()
         {
-            var val = App.Theme == Theme.Red ? RedSource : blackSource;
+            Uri val= null;
+
+            switch(App.Theme)
+            {
+                case Theme.Red:
+                    val = RedSource;
+                    break;
+
+                case Theme.Black:
+                    val = BlackSource;
+                    break;
+            }
 
             if (val != null && base.Source != val)
                 base.Source = val;

@@ -7,7 +7,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Colours.xaml"/>
                 <ResourceDictionary Source="Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="Styles/Texts.xaml"/>
                 <ResourceDictionary Source="Styles/Fonts.xaml"/>
@@ -17,10 +16,10 @@
 
                 <local:ThemeResourcesDictionary RedSource="Styles/RedTheme/RedColours.xaml" 
                                                 BlackSource="Styles/BlackTheme/BlackColours.xaml" />
+                <!--
                 <local:ThemeResourcesDictionary RedSource="Styles/RedTheme/RedSizes.xaml" 
                                                 BlackSource="Styles/BlackTheme/BlackSizes.xaml" />
-
-                <ResourceDictionary Source="Styles/CurrentTheme.xaml"/>
+                -->
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

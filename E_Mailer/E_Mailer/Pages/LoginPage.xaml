@@ -53,18 +53,6 @@
                         <CheckBox Style="{DynamicResource CheckBoxStyle1}" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Content="Theme:" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
-                <!--
-                <Button Content="Black Skin" Style="{StaticResource SignButton}" Click="Button_Click_black" Height="20"/>
-                <Button Content="Red Skin" Style="{StaticResource SignButton}" Click="Button_Click_red" Height="20"/>
--->
-                <!---
-                <Canvas Width="200" Height="10">
-                    <Path  Fill="White" Stroke="Black" StrokeThickness="2"
-                           Data="M 50,0 h 200 q 40,0 50,50 h -100 q -20,0 -25,-25
-                           h -200 q 0,20 -20,20 h -50 q -20,0 -20,-20 v -25 z"/>
-                    <TextBlock Foreground="Black" Text="Avatar" Canvas.Left="206" Canvas.Top="17" />
-                </Canvas>
--->
             </StackPanel>
         </ScrollViewer>
     </Grid>

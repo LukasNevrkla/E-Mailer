@@ -31,10 +31,6 @@ namespace E_Mailer
 
         //To enable login button only if are there necessary datas
         private void password_PasswordChanged(object sender, RoutedEventArgs e) => SetButton();
-       /* {
-           LoginViewModel x = (LoginViewModel)DataContext;
-            //x.LogParametersChanged(this);
-        } */
         private void email_TextChanged(object sender, TextChangedEventArgs e) => SetButton();
 
         void SetButton()
@@ -48,7 +44,6 @@ namespace E_Mailer
         private void CheckBox_Checked(object sender, RoutedEventArgs e) => (App.Current as App).ChangeTheme(Theme.Red);
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e) => (App.Current as App).ChangeTheme(Theme.Black);
 
-        
         private void SignButton_Click(object sender, RoutedEventArgs e)
         {
             //this.RunEndAnimation();

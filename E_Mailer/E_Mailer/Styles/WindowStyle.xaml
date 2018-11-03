@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:E_Mailer.Styles">
 
+    
+    <!--Old window style-->
     <Style TargetType="{x:Type Window}" x:Key="MainWindow2">
         <Setter Property="Template">
             <Setter.Value>
@@ -62,7 +64,7 @@
                                             <ColumnDefinition Width="AUTO"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Button Style="{StaticResource SystemButton}" Command="{Binding MenuCommand}">
+                                        <Button Style="{StaticResource IconButton}" Command="{Binding MenuCommand}">
                                             <Image Source="Images/Icon.ico"/>
                                         </Button>
 

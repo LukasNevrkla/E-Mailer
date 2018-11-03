@@ -27,6 +27,7 @@ namespace E_Mailer
             this.DataContext = new WindowViewModel(this);
         }
 
+        #region Window movement
 
         private bool x = false;
         private void Button_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -45,5 +46,7 @@ namespace E_Mailer
         {
             x = true;
         }
+
+        #endregion
     }
 }

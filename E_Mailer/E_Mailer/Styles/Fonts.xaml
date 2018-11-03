@@ -3,7 +3,6 @@
                     xmlns:local="clr-namespace:E_Mailer.Styles"
                     xmlns:System="clr-namespace:System;assembly=mscorlib">
 
-    <!--<FontFamily x:Key="BaseFont">Segoe Print</FontFamily>-->
     <FontFamily x:Key="BaseFont">Segoe Print</FontFamily>
     <FontFamily x:Key="HeaderFont">Comic Sans MS</FontFamily>
     <FontFamily x:Key="ButtonFont">Comic Sans MS</FontFamily>
