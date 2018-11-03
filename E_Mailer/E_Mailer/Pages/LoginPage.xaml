@@ -30,7 +30,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Text="Email:" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
-                            <TextBox Name="email" TextChanged="email_TextChanged" Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
+                            <TextBox Name="email" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="email_TextChanged" Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
                         </Grid>
 
                         <Grid>
@@ -44,8 +44,10 @@
                                          Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalPasswordBox}"/>
                         </Grid>
 
-                        <Button Click="SignButton_Click" Name="SignButton" Content="Přihlásit" Command="{Binding LoginCommand}"
-                                CommandParameter="{Binding ElementName=Page}"
+                        <Button Click="SignButton_Click" Name="SignButton" Content="Přihlásit" 
+                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"
+                                Command="{Binding LoginCommand}"
+                                CommandParameter="{Binding ElementName=Page}" 
                                 Style="{StaticResource SignButton}"  Margin="0 20 0 0"/>
 
                         <CheckBox Style="{DynamicResource CheckBoxStyle1}" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Content="Theme:" HorizontalAlignment="Center"/>

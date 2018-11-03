@@ -24,7 +24,7 @@ namespace E_Mailer
         public PageAnimation StartAnimation { get; set; } = PageAnimation.SlideAndFadeInFromBottom;
         public PageAnimation EndAnimation { get; set; } = PageAnimation.SlideAndFadeOutToBottom;
 
-        public float AnimationTime { get; set; } = 5;
+        public float AnimationTime { get; set; } = 1;
 
         #endregion
 
@@ -40,41 +40,25 @@ namespace E_Mailer
 
         #endregion
 
+        #region Page loaded
+
         private async void PageLoaded(object sender, RoutedEventArgs r)
         {
             if (StartAnimation != PageAnimation.None)
-                await AnimateInAsync();
+                await RunStartAnimation();
         }
 
         public async Task RunStartAnimation()
         {
-            await this.SlideAndFadeInFromBottomAsync(AnimationTime);
+            await this.PageBasicsStartEndAnimation(AnimationTime,true);
         }
 
-        public async Task AnimateInAsync()
+        public async Task RunEndAnimation()
         {
-            switch (StartAnimation)
-            {
-                case PageAnimation.SlideAndFadeInFromBottom:
-                    // Start the animation
-                    await this.SlideAndFadeInFromBottomAsync(AnimationTime);
-
-                    break;
-            }
+            await this.PageBasicsStartEndAnimation(AnimationTime, false);
         }
 
-        public async Task AnimateOutAsync()
-        {
-            switch (EndAnimation)
-            {
-                case PageAnimation.SlideAndFadeOutToBottom:
-
-                    // Start the animation
-                    await this.SlideAndFadeOutToBottomAsync(AnimationTime);
-
-                    break;
-            }
-        }
+        #endregion
     }
 
     /// <summary>

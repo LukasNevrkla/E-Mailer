@@ -74,6 +74,7 @@
     <Compile Include="Animations\PageAnimations.cs" />
     <Compile Include="Animations\StoryBoardHelpers.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperties.cs" />
+    <Compile Include="AttachedProperties\IsBusyProperty.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperty.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
     <Compile Include="ValueConventers\BooleanToVisiblityConverter.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="ViewModel\Base\IHavePassword.cs" />
     <Compile Include="ViewModel\Base\ParameterizedRelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\Base\RunCommandAsync.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Page Include="MainWindow.xaml">

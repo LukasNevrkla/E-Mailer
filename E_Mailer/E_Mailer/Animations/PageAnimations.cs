@@ -20,58 +20,22 @@ namespace E_Mailer.Animations
     public static class PageAnimations
     {
         /// <summary>
-        /// Slides a page in from the bottom
+        /// Basics page slide in / out animation.
         /// </summary>
-        /// <param name="page">The page to animate</param>
-        /// <param name="seconds">The time the animation will take</param>
+        /// <param name="page"></param>
+        /// <param name="seconds"></param>
+        /// <param name="slideIn"></param>
         /// <returns></returns>
-        public static async Task SlideAndFadeInFromBottomAsync(this Page page, float seconds)
+        public static async Task PageBasicsStartEndAnimation(this Page page, float seconds, bool slideIn)
         {
-            // Create the storyboard
             var sb = new Storyboard();
 
-            // Add slide from right animation
-            //sb.AddSlideFromBottom(seconds, page.WindowHeight);
-            sb.AddSlideVerticaly(seconds, page.WindowHeight, true, true);
+            sb.AddSlideVerticaly(seconds, page.WindowHeight, slideIn, true);
+            sb.AddFadeEffect(slideIn, slideIn ? seconds : seconds/2);
 
-            // Add fade in animation
-            sb.AddFadeEffect(true, seconds);
-
-            // Start animating
             sb.Begin(page);
-
-            // Make page visible
             page.Visibility = Visibility.Visible;
 
-            // Wait for it to finish
-            await Task.Delay((int)(seconds * 1000));
-        }
-
-        /// <summary>
-        /// Slides a page out to the left
-        /// </summary>
-        /// <param name="page">The page to animate</param>
-        /// <param name="seconds">The time the animation will take</param>
-        /// <returns></returns>
-        public static async Task SlideAndFadeOutToBottomAsync(this Page page, float seconds)
-        {
-            // Create the storyboard
-            var sb = new Storyboard();
-
-            // Add slide from right animation
-           // sb.AddSlideToBottom(seconds, page.WindowHeight);
-            sb.AddSlideVerticaly(seconds, page.WindowHeight, false, true);
-
-            // Add fade in animation
-            sb.AddFadeEffect(false, seconds / 3);
-
-            // Start animating
-            sb.Begin(page);
-
-            // Make page visible
-            page.Visibility = Visibility.Visible;
-
-            // Wait for it to finish
             await Task.Delay((int)(seconds * 1000));
         }
     }   

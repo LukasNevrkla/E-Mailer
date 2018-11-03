@@ -11,24 +11,36 @@ namespace E_Mailer
 {
     public class LoginViewModel : BindableBase
     {
+        #region Private properties
+
+        private string email;
+        private bool loginIsRunning = false;
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>
         /// The email of the user
         /// </summary>
-        public string Email { get; set; }
+        public string Email { get { return email; } set { SetProperty(ref email, value); } }
 
-        /// <summary>
-        /// The password of the user
-        /// </summary>
-        public SecureString Pssword { get; set; }
+        public string WaitText { get; set; } = "Vydržte prosím";
 
         /// <summary>
         /// A flag indicating if the login command is running
         /// </summary>
-        public bool LoginIsRunning { get; set; }
+        public bool LoginIsRunning { get { return loginIsRunning; } set { SetProperty(ref loginIsRunning, value); } }
 
         #endregion
+        /*
+        public void LogParametersChanged(object page)
+        {
+            if ((page as IHavePassword).SecurePassword.Length > 0 && Email_b.Length > 0)
+                CanLogIn = true;
+            else
+                CanLogIn = false;
+       }*/
 
         #region Commands
 
@@ -64,11 +76,27 @@ namespace E_Mailer
         /// <param name="parameter">The <see cref="SecureString"/> passed in from the view for the users password</param>
         /// <returns></returns>
         public async Task LoginAsync(object parameter)
-        {
-            await Task.Delay(100);
+        {/*
+            await RunCommandAsync.RunCommand(() => this.LoginIsRunning, async () =>
+            {
+                await Task.Delay(2000);
 
-            var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
+                var email = this.Email;
+                var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
+            });*/
+            
+            if (LoginIsRunning)
+                return;
+            try
+            {
+                LoginIsRunning = true;
+                await Task.Delay(3000);
 
+                var email = this.Email;
+                var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
+            }
+            catch { }
+            finally { LoginIsRunning = false; }
         }
 
         /// <summary>
