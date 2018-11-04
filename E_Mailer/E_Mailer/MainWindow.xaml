@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:E_Mailer"
         mc:Ignorable="d"
         
-        x:Name="LogScreen"
+        x:Name="Window"
         WindowStyle="None"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
         MinHeight="450"
         MinWidth="800"
         Title="E-Mailer" Height="450" Width="800" Icon="Images/Icon.ico">
@@ -19,17 +20,21 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
-                        <Border Padding="0">
+                        <Border Padding="0" Background="Transparent">
                             <Grid>
                                 <!-- CornerRadius = round window shape -->
-                                <Border Background="{DynamicResource MainBackground}" CornerRadius="{Binding WindowCornerRadius, FallbackValue=20}">
+                                <Border Name="ContentMask" Background="{DynamicResource MainBackground}" 
+                                        CornerRadius="{Binding WindowCornerRadius, FallbackValue=30}">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
                                     </Border.Effect>
                                 </Border>
 
                                 <!--Window content-->
-                                <Border Padding="2" >
+                                <Border>
+                                    <Border.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=ContentMask}"/>
+                                    </Border.OpacityMask>
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
                                 </Border>
 
@@ -43,7 +48,7 @@
                                               Height="45" Width="600">
 
                                         <Grid.Background>
-                                            <ImageBrush ImageSource="{DynamicResource TitleBar}"/>
+                                            <ImageBrush ImageSource="{DynamicResource TitleBar}" RenderOptions.BitmapScalingMode="HighQuality"/>
                                         </Grid.Background>
 
                                         <Grid.OpacityMask>
@@ -61,7 +66,7 @@
                                             <ColumnDefinition Width="2.75*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Image Source="Images/Icon.ico" Margin="10,0,0,0"/>
+                                        <Image Source="Images/Icon.ico" Style="{StaticResource BasicsImage}" Margin="10,0,0,0"/>
 
                                         <Viewbox Grid.Column="1">
                                             <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='E-Mailer'}"
@@ -81,12 +86,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
 
     <WindowChrome.WindowChrome>
         <WindowChrome 
-            ResizeBorderThickness="{Binding ResizeBorderThickness}"
+            ResizeBorderThickness="10"
             CaptionHeight="0"
             CornerRadius="0"
             GlassFrameThickness="0"           
@@ -94,7 +98,13 @@
     </WindowChrome.WindowChrome>
 
     <Grid>
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
-    </Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"
+               Content="{Binding AppViewModel.CurrentPage, 
+            Source={x:Static local:ViewModelLocator.Instance}, Converter={local:PageConverter}}"/>
 
+        <local:SideMenu DataContext="{Binding AppViewModel, 
+            Source={x:Static local:ViewModelLocator.Instance}}"/>
+    </Grid>
 </Window>
+    
+    

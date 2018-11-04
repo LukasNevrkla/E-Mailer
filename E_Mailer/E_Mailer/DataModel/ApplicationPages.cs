@@ -7,5 +7,10 @@ namespace E_Mailer
         /// Login page.
         /// </summary>
         Login=0,
+
+        /// <summary>
+        /// Register page
+        /// </summary>
+        Register=1
     }
 }

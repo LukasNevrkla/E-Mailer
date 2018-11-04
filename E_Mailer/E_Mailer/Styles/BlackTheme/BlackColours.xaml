@@ -27,7 +27,7 @@
     </RadialGradientBrush>
     <!--#endregion-->
 
-    <BitmapImage x:Key="TitleBar" UriSource="../../Images/Title_black.png"/>
+    <BitmapImage x:Key="TitleBar" UriSource="../../Images/TitleBar/Title_black.png"/>
 
     <!--#endregion-->
 
@@ -51,10 +51,35 @@
     <!--#endregion-->
 
     <!--#endregion-->
+    
+    <!--#region SideBar-->
+
+    <!--#region SideBarBackground-->
+    
+    <SolidColorBrush x:Key="SideBarBackground" Color="#FF210000"/>
+
+    <!--#endregion-->
+
+    <SolidColorBrush x:Key="SideBarSelectedBackground" Color="#FFDEDEDE" Opacity="0.8"/>
+    <SolidColorBrush x:Key="SideBarPressedBackground" Color="#FFF70000" Opacity="0.8"/>
+    <!--#endregion-->
 
     <!--#region Texts-->
 
     <SolidColorBrush x:Key="TextForeground" Color="White"/>
+
+    <!--#region TextHightLightedForeground-->
+
+    <Color x:Key="TextHightLightedForeground_1">Yellow</Color>
+    <Color x:Key="TextHightLightedForeground_2">White</Color>
+
+    <LinearGradientBrush x:Key="TextHightLightedForeground"  MappingMode="RelativeToBoundingBox" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Color="{DynamicResource TextHightLightedForeground_1}"/>
+        <GradientStop Color="{DynamicResource TextHightLightedForeground_2}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource TextHightLightedForeground_1}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!--#endregion-->
 
     <!--#endregion-->
 

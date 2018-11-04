@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Windows;
+
 namespace E_Mailer.Properties
 {
 
@@ -33,6 +36,8 @@ namespace E_Mailer.Properties
         internal Resources()
         {
         }
+
+        public static IEnumerable<ResourceDictionary> MergedDictionaries { get; internal set; }
 
         /// <summary>
         ///   Vrací instanci ResourceManager uloženou v mezipaměti použitou touto třídou.

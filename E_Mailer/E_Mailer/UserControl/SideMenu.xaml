@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="E_Mailer.SideMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:E_Mailer"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <Grid HorizontalAlignment="Left" MaxWidth="50" 
+          Visibility="{Binding SideMenuVisibility, 
+                Converter={local:BooleanToVisiblityConverter}, 
+                ConverterParameter=true}"
+          Background="{DynamicResource SideBarBackground}">
+        
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="5" Direction="-90"/>
+            </Grid.Effect>
+
+            <UniformGrid Rows="11" Margin="5">
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/User_white.PNG" Command="{Binding MinimaliseCommand}"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Envelope_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/OpenEnvelope_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Star_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Document_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Check_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Cross_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Trash_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Warning_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Folder_white.PNG"/>
+                <local:ImageButton NormalBackgroundImage="../Images/SideBar/Setting_white.PNG"/>
+            </UniformGrid>
+        </Grid>
+</UserControl>

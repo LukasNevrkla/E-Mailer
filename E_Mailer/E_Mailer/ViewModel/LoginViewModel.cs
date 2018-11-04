@@ -6,6 +6,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using E_Mailer.Security;
+using System.Windows;
 
 namespace E_Mailer
 {
@@ -33,14 +34,6 @@ namespace E_Mailer
         public bool LoginIsRunning { get { return loginIsRunning; } set { SetProperty(ref loginIsRunning, value); } }
 
         #endregion
-        /*
-        public void LogParametersChanged(object page)
-        {
-            if ((page as IHavePassword).SecurePassword.Length > 0 && Email_b.Length > 0)
-                CanLogIn = true;
-            else
-                CanLogIn = false;
-       }*/
 
         #region Commands
 
@@ -105,6 +98,9 @@ namespace E_Mailer
         /// <returns></returns>
         public async Task RegisterAsync()
         {
+            IoC.Get<AppViewModel>().SideMenuVisibility = true;
+            IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Register;
+
             await Task.Delay(100);
         }
     }

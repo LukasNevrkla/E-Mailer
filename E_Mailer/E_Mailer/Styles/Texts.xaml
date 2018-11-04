@@ -78,6 +78,18 @@
         </Setter>
     </Style>
     <!--#endregion-->
+    
+    <!--#region Click able textblock-->
+
+    <Style x:Key="ClickAbleBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseStyleBlock}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource TextHightLightedForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!--#endregion-->
 
     <Style TargetType="{x:Type PasswordBox}" x:Key="NormalPasswordBox">
         <Setter Property="Background" Value="Transparent"/>
@@ -108,7 +120,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
 
-        <Setter Property="local:PasswordBoxProperty.Value" Value="True" />
+        <!--<Setter Property="local:PasswordBoxProperty.Value" Value="True" />-->
 
         <Setter Property="Template">
             <Setter.Value>
@@ -128,11 +140,12 @@
                                    FontFamily="{StaticResource BaseFont}"
                                    FontSize="{TemplateBinding FontSize}"
                                    Padding="{TemplateBinding Padding}"
-                                   Visibility="{TemplateBinding local:HasTextProperty.Value, Converter={local:BooleanToVisiblityConverter}}"
+                                   
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                    Foreground="{DynamicResource TextForeground}"
                                    >
+                            <!--Visibility="{TemplateBinding local:HasTextProperty.Value, Converter={local:BooleanToVisiblityConverter}}"-->
                         </TextBlock>
 
                     </Grid>

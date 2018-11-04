@@ -7,7 +7,7 @@
     <FontFamily x:Key="HeaderFont">Comic Sans MS</FontFamily>
     <FontFamily x:Key="ButtonFont">Comic Sans MS</FontFamily>
 
-    <System:Double x:Key="SmallFontSize">10</System:Double>
+    <System:Double x:Key="SmallFontSize">14</System:Double>
     <System:Double x:Key="NormalFontSize">18</System:Double>
     <System:Double x:Key="BigFontSize">25</System:Double>
     <System:Double x:Key="LargeFontSize">40</System:Double>

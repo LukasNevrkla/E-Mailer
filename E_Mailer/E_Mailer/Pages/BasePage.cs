@@ -45,12 +45,15 @@ namespace E_Mailer
         private async void PageLoaded(object sender, RoutedEventArgs r)
         {
             if (StartAnimation != PageAnimation.None)
-                await RunStartAnimation();
+               await RunStartAnimation();
+
+            //await Task.Run(async()=> await RunStartAnimation());
+            //New threat
         }
 
         public async Task RunStartAnimation()
         {
-            await this.PageBasicsStartEndAnimation(AnimationTime,true);
+            await this.PageBasicsStartEndAnimation(AnimationTime, true);
         }
 
         public async Task RunEndAnimation()

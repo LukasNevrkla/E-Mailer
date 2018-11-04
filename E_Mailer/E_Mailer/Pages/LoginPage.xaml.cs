@@ -41,8 +41,10 @@ namespace E_Mailer
 
         #endregion
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e) => (App.Current as App).ChangeTheme(Theme.Red);
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e) => (App.Current as App).ChangeTheme(Theme.Black);
+        private void CheckBox_Checked(object sender, RoutedEventArgs e) => 
+            IoC.Get<AppViewModel>().Theme = AppTheme.Red; 
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e) => 
+            IoC.Get<AppViewModel>().Theme = AppTheme.Black;
 
         private void SignButton_Click(object sender, RoutedEventArgs e)
         {

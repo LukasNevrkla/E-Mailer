@@ -20,6 +20,8 @@ namespace E_Mailer
     /// </summary>
     public partial class MainWindow : Window
     {
+        public AppViewModel appViewModel => new AppViewModel();
+
         public MainWindow()
         {
             InitializeComponent();

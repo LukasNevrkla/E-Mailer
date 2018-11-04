@@ -7,7 +7,7 @@ namespace E_Mailer
     /// <summary>
     /// Converts the <see cref="ApplicationPage"/> to an actual view/page
     /// </summary>
-    public class ApplicationPageValueConverter : BaseValueConverter<ApplicationPageValueConverter>
+    public class PageConverter : BaseValueConverter<PageConverter>
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -15,7 +15,10 @@ namespace E_Mailer
             switch ((ApplicationPages)value)
             {
                 case ApplicationPages.Login:
-                    return new LoginPage();  //Pages.
+                    return new LoginPage();
+
+                case ApplicationPages.Register:
+                    return new RegisterPage();
 
                 default:
                     Debugger.Break();

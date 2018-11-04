@@ -8,26 +8,21 @@ using System.Windows;
 
 namespace E_Mailer
 {
-    public enum Theme { Red, Black }
+    //public enum Theme { Red, Black }
 
     /// <summary>
     /// Interakční logika pro App.xaml
     /// </summary>
     public partial class App : Application
     {
-        public static Theme Theme { get; set; } = Theme.Red;
-
-        public void ChangeTheme(Theme newTheme)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            Theme = newTheme;
+            base.OnStartup(e);
 
-            foreach (ResourceDictionary dict in Resources.MergedDictionaries)
-            {
-                if (dict is ThemeResourcesDictionary themeDict)
-                    themeDict.UpdateSource();
-                else
-                    dict.Source = dict.Source;
-            }
+            IoC.Setup();
+
+            Current.MainWindow = new MainWindow();
+            Current.MainWindow.Show();
         }
     }
 }

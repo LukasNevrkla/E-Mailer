@@ -1,13 +1,14 @@
-﻿<local:BasePage x:TypeArguments="local:LoginViewModel" x:Class="E_Mailer.LoginPage"
+﻿<local:BasePage x:TypeArguments="local:RegisterViewModel" x:Class="E_Mailer.RegisterPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:E_Mailer"
       mc:Ignorable="d" 
-                x:Name="Page"
-      d:DesignHeight="500" d:DesignWidth="800"
-      Title="LoginPage">
+      d:DesignHeight="450" d:DesignWidth="800"
+      x:Name="Page"
+      Title="RegisterPage">
+   
 
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" TextBlock.TextAlignment="Center">
@@ -15,8 +16,9 @@
                         CornerRadius="20"
                         Padding="15 50 15 15"
                         Margin="50 50 50 0">
+                
                 <StackPanel>
-                    <TextBlock Text="{DynamicResource LogScreenTitle}"
+                    <TextBlock Text="Registrace"
                              FontSize="{StaticResource LargeFontSize}" 
                              FontFamily="{StaticResource HeaderFont}"
                              Style="{StaticResource BaseStyleBlock}"
@@ -29,7 +31,17 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="Email:" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
-                        <TextBox Name="email" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="email_TextChanged" Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
+                        <TextBox Name="email" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Rok narození:" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
+                        <TextBox  Text="{Binding DateOfBith, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
                     </Grid>
 
                     <Grid>
@@ -39,26 +51,25 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="Heslo:" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
-                        <PasswordBox x:Name="PasswordBoxText" PasswordChanged="password_PasswordChanged" 
+                        <PasswordBox x:Name="PasswordBoxText"  
                                          Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalPasswordBox}"/>
                     </Grid>
 
-                    <Button Click="SignButton_Click" Name="SignButton" Content="Přihlásit" 
-                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"
-                                Command="{Binding LoginCommand}"
+                    <Button  Name="SignButton" Content="Zaregistrovat" 
+                                local:IsBusyProperty.Value="{Binding RegisterIsRunning}"
+                                Command="{Binding RegisterCommand}"
                                 CommandParameter="{Binding ElementName=Page}" 
                                 Style="{StaticResource SignButton}"  Margin="0 20 0 0"/>
 
-                    <TextBlock Text="Ještě nemám účet." Style="{StaticResource ClickAbleBlock}" 
+                    <TextBlock Text="Už mám účet." Style="{StaticResource ClickAbleBlock}" 
                                    FontSize="{StaticResource SmallFontSize}" Margin="10">
                         <TextBlock.InputBindings>
-                            <MouseBinding Command="{Binding RegisterCommand}" MouseAction="LeftClick" />
+                            <MouseBinding Command="{Binding ToLoginCommand}" MouseAction="LeftClick" />
                         </TextBlock.InputBindings>
                     </TextBlock>
 
                 </StackPanel>
             </Border>
-            <CheckBox Style="{DynamicResource CheckBoxStyle1}" IsChecked="True" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Content="Theme:" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </local:BasePage>

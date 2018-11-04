@@ -1,9 +1,8 @@
 ﻿<Application x:Class="E_Mailer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:E_Mailer"
-             StartupUri="MainWindow.xaml">
-    
+             xmlns:local="clr-namespace:E_Mailer">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,10 +11,14 @@
                 <ResourceDictionary Source="Styles/Fonts.xaml"/>
                 <ResourceDictionary Source="Styles/WindowStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ChceckBoxes.xaml"/>
+                <ResourceDictionary Source="Styles/Images.xaml"/>
 
 
                 <local:ThemeResourcesDictionary RedSource="Styles/RedTheme/RedColours.xaml" 
                                                 BlackSource="Styles/BlackTheme/BlackColours.xaml" />
+
+                <local:LanguageResources En="Languages/EnglishResources.xaml" 
+                                                Cz="Languages/CzechResources.xaml" />
                 <!--
                 <local:ThemeResourcesDictionary RedSource="Styles/RedTheme/RedSizes.xaml" 
                                                 BlackSource="Styles/BlackTheme/BlackSizes.xaml" />
@@ -24,5 +27,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-    
+
+    <!--StartupUri="MainWindow.xaml">-->
+
 </Application>

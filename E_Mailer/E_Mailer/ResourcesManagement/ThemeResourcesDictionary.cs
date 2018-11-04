@@ -27,18 +27,17 @@ namespace E_Mailer
                 UpdateSource();
             }
         }
-
         public void UpdateSource()
         {
-            Uri val= null;
+            Uri val = null;
 
-            switch(App.Theme)
+            switch (IoC.Get<AppViewModel>().Theme)
             {
-                case Theme.Red:
+                case AppTheme.Red:
                     val = RedSource;
                     break;
 
-                case Theme.Black:
+                case AppTheme.Black:
                     val = BlackSource;
                     break;
             }

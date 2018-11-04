@@ -11,11 +11,11 @@ namespace E_Mailer
 
         private Window window;
 
-        private ApplicationPages currentPage = ApplicationPages.Login;
+        //private ApplicationPages currentPage = ApplicationPages.Login;
 
         #region Window properties
 
-        private int windowCornerRadius = 20;
+        private int windowCornerRadius = 30;
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace E_Mailer
 
         #region Public properties
 
-        public ApplicationPages CurrentPage { get { return currentPage; } set { SetProperty(ref currentPage, value); } }
+       // public ApplicationPages CurrentPage { get { return currentPage; } set { SetProperty(ref currentPage, value); } }
 
         #region Window properties
 

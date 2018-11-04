@@ -40,6 +40,9 @@
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net47\CommonServiceLocator.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -74,23 +77,47 @@
     <Compile Include="Animations\PageAnimations.cs" />
     <Compile Include="Animations\StoryBoardHelpers.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperties.cs" />
+    <Compile Include="AttachedProperties\ImageButton.cs" />
+    <Compile Include="AttachedProperties\ImageSurceProperty.cs" />
     <Compile Include="AttachedProperties\IsBusyProperty.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperty.cs" />
+    <Compile Include="DataModel\AppLanguage.cs" />
+    <Compile Include="DataModel\AppTheme.cs" />
+    <Compile Include="DataModel\Gender.cs" />
+    <Compile Include="IoC\IoC.cs" />
+    <Compile Include="Pages\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ResourcesManagement\LanguageResources.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
+    <Compile Include="UserControl\SideMenu.xaml.cs">
+      <DependentUpon>SideMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConventers\BooleanToVisiblityConverter.cs" />
     <Compile Include="DataModel\ApplicationPages.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ThemeManagement\ThemeResourcesDictionary.cs" />
+    <Compile Include="ResourcesManagement\ThemeResourcesDictionary.cs" />
     <Compile Include="ValueConventers\BaseValueConventer.cs" />
     <Compile Include="ValueConventers\PageConventer.cs" />
+    <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\Base\IHavePassword.cs" />
     <Compile Include="ViewModel\Base\ParameterizedRelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
+    <Page Include="Languages\CzechResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Languages\EnglishResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,9 +134,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\Buttons.xaml">
+    <Page Include="Pages\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ChceckBoxes.xaml">
       <SubType>Designer</SubType>
@@ -123,6 +154,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\Images.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\RedTheme\RedColours.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\SideMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,17 +206,39 @@
     <Resource Include="Images\Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\stažený soubor.png" />
+    <Resource Include="Images\TitleBar\Title_black_red.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Title_black_red.png" />
+    <Resource Include="Images\TitleBar\Title_light_red.png" />
+    <Resource Include="Images\TitleBar\Title_black.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Title_light_red.png" />
-    <Resource Include="Images\Title_black.png" />
+    <Resource Include="Images\TitleBar\Title_white.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Title_white.png" />
+    <Resource Include="Images\SideBar\User_white.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SideBar\Envelope_white.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SideBar\OpenEnvelope_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SideBar\Star_white.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SideBar\Document_white.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SideBar\Check_white.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SideBar\Cross_white.PNG" />
+    <Resource Include="Images\SideBar\Folder_white.PNG" />
+    <Resource Include="Images\SideBar\Setting_white.PNG" />
+    <Resource Include="Images\SideBar\Trash_white.PNG" />
+    <Resource Include="Images\SideBar\Warning_white.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

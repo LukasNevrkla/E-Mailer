@@ -64,8 +64,10 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontSize" Value="{StaticResource BigFontSize}" />
         <Setter Property="FontFamily" Value="{StaticResource ButtonFont}" />
-        <Setter Property="Padding" Value="50 10" />
+        <Setter Property="Padding" Value="10 10" />
         <Setter Property="Margin" Value="0 10" />
+        
+        <Setter Property="local:IsBusyProperty.Value" Value="False" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -129,6 +131,37 @@
                             </BeginStoryboard>
                             </DataTrigger.ExitActions>
                         </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+    
+    <!--#region SideBarButton-->
+
+
+    <Style TargetType="local:ImageButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ImageButton">
+                    <Grid Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}">
+                        <Image x:Name="img" Source="{Binding NormalBackgroundImage, RelativeSource={RelativeSource TemplatedParent}}"
+                               Style="{StaticResource BasicsImage}"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource SideBarSelectedBackground}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="false">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource SideBarPressedBackground}"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
