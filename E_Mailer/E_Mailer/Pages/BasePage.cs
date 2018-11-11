@@ -36,6 +36,7 @@ namespace E_Mailer
                 this.Visibility = Visibility.Collapsed;
 
             this.Loaded += PageLoaded;
+            this.Unloaded += PageUnLoaded;
         }
 
         #endregion
@@ -49,6 +50,12 @@ namespace E_Mailer
 
             //await Task.Run(async()=> await RunStartAnimation());
             //New threat
+        }
+
+        private async void PageUnLoaded(object sender, RoutedEventArgs r)
+        {
+            //if (EndAnimation != PageAnimation.None)
+               // await RunEndAnimation();
         }
 
         public async Task RunStartAnimation()

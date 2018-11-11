@@ -3,6 +3,34 @@
                     xmlns:local="clr-namespace:E_Mailer.Styles.RedTheme">
 
     
+   <!--#region PrimaryColours-->
+
+    <!--#region PrimaryColour-->
+<!--
+    <Color x:Key="PrimaryColour_1">#FF100000</Color>
+    <Color x:Key="PrimaryColour_2">#FF100101</Color>
+
+    <LinearGradientBrush x:Key="PrimaryColour" EndPoint="1,0.5" MappingMode="RelativeToBoundingBox" StartPoint="0,0.5" Opacity="0.9">
+        <GradientStop Color="{DynamicResource MainColour_1}" Offset="0"/>
+        <GradientStop Color="{DynamicResource MainColour_2}" Offset="1"/>
+    </LinearGradientBrush>
+    -->
+
+    <!--#endregion-->
+
+    <!--#region SecondaryColour-->
+
+    <!--<SolidColorBrush x:Key="SecondaryColour" Color="#FF3E0101"/>-->
+
+
+    <!--#endregion-->
+
+    <!--#region PrimaryTextColor-->
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
     
     <!--#region Main window-->
 
@@ -59,11 +87,31 @@
 
     <!--#endregion-->
 
-    <SolidColorBrush x:Key="SideBarSelectedBackground" Color="#FFDEDEDE" Opacity="0.8"/>
-    <SolidColorBrush x:Key="SideBarPressedBackground" Color="#FF00F700" Opacity="0.8"/>
+    <SolidColorBrush x:Key="SideBarSelectedBackground" Color="#FFDEDEDE" Opacity="0.1"/>
+    <SolidColorBrush x:Key="SideBarPressedBackground" Color="#FF00F700" Opacity="0.2"/>
 
     <!--#endregion-->
 
+    <!--#region SettingsPage-->
+
+    <!--#region SettingButton-->
+
+    <Color x:Key="SettingButton_1">#FF570000</Color>
+    <Color x:Key="SettingButton_2">#FF210000</Color>
+
+    <LinearGradientBrush x:Key="SettingButton" StartPoint="0,1" EndPoint="1,0" >
+        <GradientStop Color="{DynamicResource SettingButtons_1}" Offset="0"/>
+        <GradientStop Color="{DynamicResource SettingButtons_2}" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="SettingButtonBrushSelected" Color="White"/>
+    <SolidColorBrush x:Key="SettingButtonBrushPressed" Color="Green"/>
+
+    <!--#endregion-->
+    
+
+    <!--#endregion-->
+    
     <!--#region Texts-->
 
     <SolidColorBrush x:Key="TextForeground" Color="White"/>

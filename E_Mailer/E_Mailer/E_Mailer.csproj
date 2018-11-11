@@ -76,17 +76,25 @@
     <Compile Include="Animations\PageAnimation.cs" />
     <Compile Include="Animations\PageAnimations.cs" />
     <Compile Include="Animations\StoryBoardHelpers.cs" />
+    <Compile Include="AttachedProperties\AnimationAttachedProperty.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperties.cs" />
     <Compile Include="AttachedProperties\ImageButton.cs" />
     <Compile Include="AttachedProperties\ImageSurceProperty.cs" />
     <Compile Include="AttachedProperties\IsBusyProperty.cs" />
+    <Compile Include="AttachedProperties\NormalButton.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperty.cs" />
     <Compile Include="DataModel\AppLanguage.cs" />
     <Compile Include="DataModel\AppTheme.cs" />
     <Compile Include="DataModel\Gender.cs" />
+    <Compile Include="DataModel\LanguageButtonModel.cs" />
+    <Compile Include="DataModel\ThemeButtonModel.cs" />
+    <Compile Include="Helpers\CommandHelper.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ResourcesManagement\LanguageResources.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
@@ -106,6 +114,7 @@
     <Compile Include="ViewModel\Base\IHavePassword.cs" />
     <Compile Include="ViewModel\Base\ParameterizedRelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\SettingsPageViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -135,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

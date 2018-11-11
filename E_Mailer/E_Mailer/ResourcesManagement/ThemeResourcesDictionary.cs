@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 
@@ -27,6 +28,15 @@ namespace E_Mailer
                 UpdateSource();
             }
         }
+        /*
+        public List<Uri> Themes= new List<Uri>();
+
+        public ThemeResourcesDictionary()
+        {
+            Themes.Add(RedSource);
+            Themes.Add(BlackSource);
+        }*/
+
         public void UpdateSource()
         {
             Uri val = null;

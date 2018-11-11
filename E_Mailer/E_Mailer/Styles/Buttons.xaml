@@ -26,6 +26,57 @@
     </Style>
     <!--#endregion-->
 
+    <!--#region NormalButton-->
+
+    <Style x:Key="NormalButton" TargetType="local:NormalButton" BasedOn="{StaticResource Hoverless}">
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource ButtonFont}" />
+        <Setter Property="Padding" Value="10 10" />
+        <Setter Property="Margin" Value="0 10" />
+        <Setter Property="Background" Value="{Binding NormalBackground}" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:NormalButton">
+                    <Border x:Name="border" CornerRadius="0,10,0,10"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="True">
+
+                        <TextBlock Grid.Row="1" Text="{TemplateBinding Content}" 
+                                   Focusable="False" 
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   Margin="{TemplateBinding Padding}" 
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"                    
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Style="{StaticResource BaseStyleBlock}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource ThemeButtonBrushSelected}"/>
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource ThemeButtonBrushPressed}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ThemeButtonBrushPressed}"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
     <!--#region IconButton-->
     <Style TargetType="{x:Type Button}" x:Key="IconButton" BasedOn="{StaticResource Hoverless}">
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
@@ -57,7 +108,7 @@
     <!--#endregion-->
 
     <!--#region SignButton-->
-    
+
     <Style x:Key="SignButton" TargetType="{x:Type Button}" BasedOn="{StaticResource Hoverless}">
         <Setter Property="Background" Value="{DynamicResource DeactiveLogButtonBackground}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
@@ -66,7 +117,7 @@
         <Setter Property="FontFamily" Value="{StaticResource ButtonFont}" />
         <Setter Property="Padding" Value="10 10" />
         <Setter Property="Margin" Value="0 10" />
-        
+
         <Setter Property="local:IsBusyProperty.Value" Value="False" />
 
         <Setter Property="Template">
@@ -123,12 +174,12 @@
                                 </BeginStoryboard>
                             </DataTrigger.EnterActions>
                             <DataTrigger.ExitActions>
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
                                     To="1" FillBehavior="HoldEnd" />
-                                </Storyboard>
-                            </BeginStoryboard>
+                                    </Storyboard>
+                                </BeginStoryboard>
                             </DataTrigger.ExitActions>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -136,11 +187,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <!--#endregion-->
     
-    <!--#region SideBarButton-->
+    <!--#endregion-->
 
+    <!--#region SideBarButton-->
 
     <Style TargetType="local:ImageButton">
         <Setter Property="Background" Value="Transparent"/>
@@ -148,8 +198,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:ImageButton">
                     <Grid Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}">
-                        <Image x:Name="img" Source="{Binding NormalBackgroundImage, RelativeSource={RelativeSource TemplatedParent}}"
-                               Style="{StaticResource BasicsImage}"/>
+                        <!--Style is from dynamics res bcs static res dont wokrs xD-->
+                        <Image x:Name="img" Source="{Binding NormalBackgroundImage, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource BaseImage}"/>
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -169,5 +219,68 @@
     </Style>
 
     <!--#endregion-->
+
+
+    <!--#region ThemeButton-->
+
+    <Style x:Key="ThemeButton" TargetType="local:ImageButton" BasedOn="{StaticResource Hoverless}">
+        <Setter Property="Foreground" Value="{DynamicResource TextForeground}" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+        <Setter Property="FontFamily" Value="{StaticResource ButtonFont}" />
+        <Setter Property="Padding" Value="10 10" />
+        <Setter Property="Margin" Value="0 10" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ImageButton">
+                    <Border x:Name="border" CornerRadius="10"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image x:Name="img" Grid.Row="0" Source="{Binding NormalBackgroundImage, RelativeSource={RelativeSource TemplatedParent}}"
+                              Style="{DynamicResource BaseImage}"/>
+
+                            <TextBlock Grid.Row="1" Text="{TemplateBinding Content}" 
+                                   Focusable="False" 
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   Margin="{TemplateBinding Padding}" 
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"                    
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Style="{StaticResource BaseStyleBlock}"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource SettingButtonBrushSelected}"/>
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource SettingButtonBrushPressed}"/>
+                <Setter Property="Foreground" Value="{DynamicResource SettingButtonBrushPressed}"/>
+            </Trigger>
+            
+        </Style.Triggers>
+    </Style>
+
+
+    <!--#endregion-->
     
+
+
 </ResourceDictionary>

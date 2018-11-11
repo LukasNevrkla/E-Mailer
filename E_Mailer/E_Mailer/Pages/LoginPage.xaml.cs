@@ -41,11 +41,6 @@ namespace E_Mailer
 
         #endregion
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e) => 
-            IoC.Get<AppViewModel>().Theme = AppTheme.Red; 
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e) => 
-            IoC.Get<AppViewModel>().Theme = AppTheme.Black;
-
         private void SignButton_Click(object sender, RoutedEventArgs e)
         {
             //this.RunEndAnimation();

@@ -3,10 +3,14 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:E_Mailer.Languages">
 
-    
-    <system:String x:Key="LogScreenTitle">Loging screen</system:String>
+    <!--#region Log screen-->
+
+    <system:String x:Key="LogScreenTitle">Log screen</system:String>
     <system:String x:Key="Mail">Mail:</system:String>
     <system:String x:Key="Password">Password:</system:String>
     <system:String x:Key="LogIn">Log in</system:String>
+    <system:String x:Key="NoAccountText">I do not have an account.</system:String>
+
+    <!--#endregion-->
 
 </ResourceDictionary>

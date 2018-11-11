@@ -20,6 +20,9 @@ namespace E_Mailer
                 case ApplicationPages.Register:
                     return new RegisterPage();
 
+                case ApplicationPages.Settings:
+                    return new SettingsPage();
+
                 default:
                     Debugger.Break();
                     return null;

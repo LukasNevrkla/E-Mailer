@@ -20,9 +20,8 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
-                        <Border Padding="0" Background="Transparent">
+                        <Border Background="Transparent">
                             <Grid>
-                                <!-- CornerRadius = round window shape -->
                                 <Border Name="ContentMask" Background="{DynamicResource MainBackground}" 
                                         CornerRadius="{Binding WindowCornerRadius, FallbackValue=30}">
                                     <Border.Effect>
@@ -31,16 +30,20 @@
                                 </Border>
 
                                 <!--Window content-->
-                                <Border>
-                                    <Border.OpacityMask>
+                                <Grid>
+                                    <Grid.OpacityMask>
                                         <VisualBrush Visual="{Binding ElementName=ContentMask}"/>
-                                    </Border.OpacityMask>
-                                    <ContentPresenter Content="{TemplateBinding Content}"/>
-                                </Border>
+                                    </Grid.OpacityMask>
+
+                                    <Grid>
+                                        <local:SideMenu DataContext="{Binding AppViewModel, Source={x:Static local:ViewModelLocator.Instance}}"/>
+                                        <ContentPresenter  Content="{TemplateBinding Content}" Margin="70,55,10,10"/>
+                                    </Grid>
+                                </Grid>
 
                                 <!--Title bar-->
                                 <Grid VerticalAlignment="Top" HorizontalAlignment="Right">
-                                    <Border Name="Mask" CornerRadius="{Binding MaskCornerRadius}" 
+                                    <Border Name="Mask" CornerRadius="{Binding MaskCornerRadius, FallbackValue=30}" 
                                             Background="{DynamicResource MainBackground}">
                                     </Border>
 
@@ -66,9 +69,10 @@
                                             <ColumnDefinition Width="2.75*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Image Source="Images/Icon.ico" Style="{StaticResource BasicsImage}" Margin="10,0,0,0"/>
+                                        <Image Source="Images/Icon.ico" Margin="10,0,0,0" Style="{StaticResource BaseImage}"/>
+                                        
 
-                                        <Viewbox Grid.Column="1">
+                                            <Viewbox Grid.Column="1">
                                             <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='E-Mailer'}"
                                                        Style="{StaticResource BaseStyleBlock}"/>
                                         </Viewbox>
@@ -93,7 +97,7 @@
             ResizeBorderThickness="10"
             CaptionHeight="0"
             CornerRadius="0"
-            GlassFrameThickness="0"           
+            GlassFrameThickness="0"     
             />
     </WindowChrome.WindowChrome>
 
@@ -101,9 +105,6 @@
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"
                Content="{Binding AppViewModel.CurrentPage, 
             Source={x:Static local:ViewModelLocator.Instance}, Converter={local:PageConverter}}"/>
-
-        <local:SideMenu DataContext="{Binding AppViewModel, 
-            Source={x:Static local:ViewModelLocator.Instance}}"/>
     </Grid>
 </Window>
     

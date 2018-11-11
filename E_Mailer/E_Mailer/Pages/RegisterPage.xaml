@@ -16,6 +16,9 @@
                         CornerRadius="20"
                         Padding="15 50 15 15"
                         Margin="50 50 50 0">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="10" BlurRadius="5"/>
+                </Border.Effect>
                 
                 <StackPanel>
                     <TextBlock Text="Registrace"

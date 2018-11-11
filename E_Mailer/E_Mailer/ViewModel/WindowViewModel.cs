@@ -29,7 +29,7 @@ namespace E_Mailer
 
         public CornerRadius WindowCornerRadius { get { return new CornerRadius(windowCornerRadius); } }
 
-        public CornerRadius MaskCornerRadius { get { return new CornerRadius(0, windowCornerRadius, 0,0); } }
+        public CornerRadius MaskCornerRadius { get { return new CornerRadius( windowCornerRadius); } } //CornerRadius(0, windowCornerRadius, 0,0);
 
         #endregion
 

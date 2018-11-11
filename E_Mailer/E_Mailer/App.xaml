@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                
                 <ResourceDictionary Source="Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="Styles/Texts.xaml"/>
                 <ResourceDictionary Source="Styles/Fonts.xaml"/>
@@ -19,10 +20,6 @@
 
                 <local:LanguageResources En="Languages/EnglishResources.xaml" 
                                                 Cz="Languages/CzechResources.xaml" />
-                <!--
-                <local:ThemeResourcesDictionary RedSource="Styles/RedTheme/RedSizes.xaml" 
-                                                BlackSource="Styles/BlackTheme/BlackSizes.xaml" />
-                -->
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
