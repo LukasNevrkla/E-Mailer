@@ -41,11 +41,6 @@ namespace E_Mailer
 
         #endregion
 
-        private void SignButton_Click(object sender, RoutedEventArgs e)
-        {
-            //this.RunEndAnimation();
-        }
-
         public SecureString SecurePassword => PasswordBoxText.SecurePassword;
     }
 }

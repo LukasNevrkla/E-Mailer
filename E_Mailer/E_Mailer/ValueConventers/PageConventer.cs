@@ -23,6 +23,9 @@ namespace E_Mailer
                 case ApplicationPages.Settings:
                     return new SettingsPage();
 
+                case ApplicationPages.Emails:
+                    return new EmailsPage();
+
                 default:
                     Debugger.Break();
                     return null;

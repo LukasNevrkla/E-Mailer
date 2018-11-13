@@ -3,17 +3,33 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:E_Mailer.Languages">
 
+    <!--#region Generall-->
 
-    <!--#region Log screen-->
-    
-    <system:String x:Key="LogScreenTitle">Přihlášení</system:String>
     <system:String x:Key="Mail">Email:</system:String>
     <system:String x:Key="Password">Heslo:</system:String>
+    <system:String x:Key="YearOfBirth">Rok narození:</system:String>
+
+    <system:String x:Key="WaitText">Vydržte prosím</system:String>
+    
+    <!--#endregion-->
+
+
+    <!--#region Log screen-->
+
+    <system:String x:Key="LogScreenTitle">Přihlášení</system:String>
     <system:String x:Key="LogIn">Přihlásit</system:String>
     <system:String x:Key="NoAccountText">Ještě nemám účet.</system:String>
 
     <!--#endregion-->
-    
+
+    <!--#region Register screen-->
+
+    <system:String x:Key="RegisterScreenTitle">Registrace</system:String>
+    <system:String x:Key="Register">Registrovat</system:String>
+    <system:String x:Key="IHaveAccountText">Už mám účet.</system:String>
+
+    <!--#endregion-->
+
     <!--#region Settings page-->
 
     <system:String x:Key="SettingPageTitle">Nastavení</system:String>

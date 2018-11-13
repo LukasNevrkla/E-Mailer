@@ -20,6 +20,52 @@ namespace E_Mailer.Animations
     {
         #region Slide effect
 
+        public static void AddSlide(this Storyboard storyboard, SlidePositions start, SlidePositions end, float seconds, double start_offset, double end_offset)
+        {
+            var animation = new ThicknessAnimation
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = SlidePosToThickness(start, start_offset),
+                To = SlidePosToThickness(end, end_offset),
+                DecelerationRatio = 0.9f
+            };
+
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+            storyboard.Children.Add(animation);
+        }
+
+        public static Thickness SlidePosToThickness (SlidePositions position, double offset)
+        {
+            Thickness result;
+
+            switch(position)
+            {
+                case SlidePositions.Left:
+                    result = new Thickness(-offset, 0, 0, 0);
+                    break;
+
+                case SlidePositions.Top:
+                    result = new Thickness(0,-offset, 0, 0);
+                    break;
+
+                case SlidePositions.Right:
+                    result = new Thickness(0, 0, -offset, 0);
+                    break;
+
+                case SlidePositions.Bottom:
+                    result = new Thickness(0, 0, 0, -offset);
+                    break;
+
+                case SlidePositions.Center:
+                default:
+                    result = new Thickness(0, 0, 0, 0);
+                    break;
+            }
+
+            return result;
+        }
+
+        /*
         /// <summary>
         /// Add verticaly slide. 
         /// If slideIn = true, it will slide to middle. Else it slide out.
@@ -46,6 +92,32 @@ namespace E_Mailer.Animations
             storyboard.Children.Add(animation);
         }
 
+        /// <summary>
+        /// Add horizontaly slide. 
+        /// If slideIn = true, it will slide to middle. Else it slide out.
+        /// If leftDirection = true, it will slide (to/ from) left. Else from right.
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
+        /// <param name="offset"></param>
+        /// <param name="slideIn"></param>
+        /// <param name="bottomDirection"></param>
+        public static void AddSlideHorizontaly(this Storyboard storyboard, float seconds, double offset, bool slideIn, bool leftDirection)
+        {
+            double o = leftDirection ? offset : -offset;
+
+            var animation = new ThicknessAnimation
+            {
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                From = new Thickness(slideIn ? o : 0, 0, 0, 0),
+                To = new Thickness(slideIn ? 0 : o, 0, 0, 0),
+                DecelerationRatio = 0.9f
+            };
+
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+            storyboard.Children.Add(animation);
+        }
+        */
         #endregion
 
         #region Fade effects

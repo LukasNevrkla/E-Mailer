@@ -10,7 +10,7 @@ namespace E_Mailer
     public class ThemeButtonModel
     {
 
-        #region Private properties
+        #region Public properties
 
         public string Content { get; set; }
 

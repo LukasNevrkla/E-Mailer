@@ -9,7 +9,7 @@
       Title="SettingsPage">
 
 
-    <Grid>
+    <Grid Margin="50">
         <StackPanel>
             <TextBlock Text="{DynamicResource SettingPageTitle}" 
                        FontSize="{StaticResource LargeFontSize}" 
@@ -43,7 +43,7 @@
                     </ScrollViewer>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1">
+                <StackPanel Grid.Column="2">
                     <TextBlock Text="{DynamicResource LanguageSettingTitle}" 
                        FontSize="{StaticResource BigFontSize}" 
                        Style="{StaticResource BaseStyleBlock}"/>
@@ -56,7 +56,7 @@
 
                                                 Command="{Binding ElementName=LanguageButtons, Path=DataContext.LanguageSelectCommand}"
                                                 CommandParameter="{Binding Parameter}"
-                                                   MaxHeight="200" Margin="20"/>
+                                                   MaxHeight="200" Margin="30"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

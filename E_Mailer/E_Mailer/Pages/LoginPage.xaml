@@ -18,7 +18,7 @@
             <Border Background="{DynamicResource LogScreenBackground}"
                         CornerRadius="20"
                         Padding="15 50 15 15"
-                        Margin="50 50 50 0">
+                        Margin="50 50 50 20">
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="10" BlurRadius="5"/>
                 </Border.Effect>
@@ -27,7 +27,7 @@
                              FontSize="{StaticResource LargeFontSize}" 
                              FontFamily="{StaticResource HeaderFont}"
                              Style="{StaticResource BaseStyleBlock}"
-                                   Margin="0 0 0 10"/>
+                                   Margin="20 10 20 10"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -50,7 +50,7 @@
                                          Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalPasswordBox}"/>
                     </Grid>
 
-                    <Button Click="SignButton_Click" Name="SignButton" Content="{DynamicResource LogIn}" 
+                    <Button  Name="SignButton" Content="{DynamicResource LogIn}" 
                                 local:IsBusyProperty.Value="{Binding LoginIsRunning}"
                                 Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=Page}" 

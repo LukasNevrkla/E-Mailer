@@ -26,8 +26,6 @@ namespace E_Mailer
         /// </summary>
         public string Email { get { return email; } set { SetProperty(ref email, value); } }
 
-        public string WaitText { get; set; } = "Vydržte prosím";
-
         /// <summary>
         /// A flag indicating if the login command is running
         /// </summary>

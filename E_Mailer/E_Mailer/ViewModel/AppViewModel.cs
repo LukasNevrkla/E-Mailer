@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using E_Mailer.Helpers;
+using System.Collections.ObjectModel;
 
 namespace E_Mailer
 {
@@ -36,21 +37,12 @@ namespace E_Mailer
 
         public bool SideMenuVisibility { get { return sideMenuVisibility; } set { SetProperty(ref sideMenuVisibility, value); } }
 
+        public ObservableCollection<SideMenuButtonModel> SideMenuButtons { get; set; } = new ObservableCollection<SideMenuButtonModel>();
+
         #endregion
 
         #region Commands
 
-        public RelayCommand UserCommand { get; set; }
-        public RelayCommand UnopenedCommand { get; set; }
-        public RelayCommand OpenedCommand { get; set; }
-        public RelayCommand StarCommand { get; set; }
-        public RelayCommand UnfinishedCommand { get; set; }
-        public RelayCommand SendedCommand { get; set; }
-        public RelayCommand UnsendedCommand { get; set; }
-        public RelayCommand TrashCommand { get; set; }
-        public RelayCommand SpamCommand { get; set; }
-        public RelayCommand FolderCommand { get; set; }
-        public RelayCommand SettingCommand { get; set; }
 
         #endregion
 
@@ -58,29 +50,84 @@ namespace E_Mailer
 
         public AppViewModel()
         {
-            UserCommand = new RelayCommand( () =>  ReloadDictionaries());
-            UnopenedCommand = new RelayCommand(() => ReloadDictionaries());
-            OpenedCommand = new RelayCommand(() => ReloadDictionaries());
-            StarCommand = new RelayCommand(() => ReloadDictionaries());
-            UnfinishedCommand = new RelayCommand(() => ReloadDictionaries());
-            SendedCommand = new RelayCommand(() => ReloadDictionaries());
-            UnsendedCommand = new RelayCommand(() => ReloadDictionaries());
-            TrashCommand = new RelayCommand(() => ReloadDictionaries());
-            SpamCommand = new RelayCommand(() => ReloadDictionaries());
-            FolderCommand = new RelayCommand(() => ReloadDictionaries());
-            SettingCommand = new RelayCommand(() => CommandHelper.RunAsyncCommand(ref sideMenuFlag, async ()=> 
-            {
-                await Task.Delay(5);
-                if (IoC.Get<AppViewModel>().CurrentPage == ApplicationPages.Settings)
-                    IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Login;
-                else
-                    IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Settings;
-            }));
+            InitializeSideMenu();
         }
 
         #endregion
 
+        #region Initialization
 
+        private void InitializeSideMenu()
+        {
+            string prefix = "../Images/SideBar/";
+
+            AddSideMenuButton(prefix+ "User_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+
+            AddSideMenuButton(prefix + "Envelope_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+                if (IoC.Get<AppViewModel>().CurrentPage == ApplicationPages.Emails)
+                    IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Login;
+                else
+                    IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Emails;
+            });
+
+            AddSideMenuButton(prefix + "OpenEnvelope_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Star_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Document_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Check_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Cross_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Trash_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Warning_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Folder_white.PNG", async () =>
+            {
+                await Task.Delay(5);
+            });
+            AddSideMenuButton(prefix + "Setting_white.PNG", async () =>
+            {
+                await Task.Delay(0);
+                if (IoC.Get<AppViewModel>().CurrentPage == ApplicationPages.Settings)
+                    IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Login;
+                else
+                    IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Settings;
+            });
+        }
+
+        private void AddSideMenuButton(string ImageUri, Func<Task> action)
+        {
+            SideMenuButtons.Add(new SideMenuButtonModel(ImageUri,
+               new RelayCommand(() => CommandHelper.RunAsyncCommand(ref sideMenuFlag, async () =>
+               {
+                   await action();
+               })
+               )));
+        }
+
+        #endregion
 
         public void ReloadDictionaries()
         {

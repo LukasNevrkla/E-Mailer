@@ -139,7 +139,7 @@
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisiblityConverter}}"/>
 
-                            <TextBlock Text="{Binding WaitText}" 
+                            <TextBlock Text="{DynamicResource WaitText}" 
                                        Focusable="False" 
                                        FontFamily="{TemplateBinding FontFamily}"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 

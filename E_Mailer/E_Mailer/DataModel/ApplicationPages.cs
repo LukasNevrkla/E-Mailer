@@ -5,6 +5,7 @@ namespace E_Mailer
     {
         Login,
         Register,
-        Settings
+        Settings,
+        Emails
     }
 }

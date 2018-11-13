@@ -75,21 +75,26 @@
     </ApplicationDefinition>
     <Compile Include="Animations\PageAnimation.cs" />
     <Compile Include="Animations\PageAnimations.cs" />
+    <Compile Include="Animations\SlidePositions.cs" />
     <Compile Include="Animations\StoryBoardHelpers.cs" />
-    <Compile Include="AttachedProperties\AnimationAttachedProperty.cs" />
     <Compile Include="AttachedProperties\BaseAttachedProperties.cs" />
     <Compile Include="AttachedProperties\ImageButton.cs" />
     <Compile Include="AttachedProperties\ImageSurceProperty.cs" />
     <Compile Include="AttachedProperties\IsBusyProperty.cs" />
+    <Compile Include="AttachedProperties\NoHistoryFrame.cs" />
     <Compile Include="AttachedProperties\NormalButton.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperty.cs" />
     <Compile Include="DataModel\AppLanguage.cs" />
     <Compile Include="DataModel\AppTheme.cs" />
     <Compile Include="DataModel\Gender.cs" />
     <Compile Include="DataModel\LanguageButtonModel.cs" />
+    <Compile Include="DataModel\SideMenuButtonModel.cs" />
     <Compile Include="DataModel\ThemeButtonModel.cs" />
     <Compile Include="Helpers\CommandHelper.cs" />
     <Compile Include="IoC\IoC.cs" />
+    <Compile Include="Pages\EmailsPage.xaml.cs">
+      <DependentUpon>EmailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
@@ -98,6 +103,9 @@
     </Compile>
     <Compile Include="ResourcesManagement\LanguageResources.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
+    <Compile Include="UserControl\PagesFrame.xaml.cs">
+      <DependentUpon>PagesFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\SideMenu.xaml.cs">
       <DependentUpon>SideMenu.xaml</DependentUpon>
     </Compile>
@@ -114,9 +122,10 @@
     <Compile Include="ViewModel\Base\IHavePassword.cs" />
     <Compile Include="ViewModel\Base\ParameterizedRelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
-    <Compile Include="ViewModel\SettingsPageViewModel.cs" />
-    <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\PagesViewModels\EmailsViewModel.cs" />
+    <Compile Include="ViewModel\PagesViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModel\PagesViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModel\PagesViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
     <Page Include="Languages\CzechResources.xaml">
@@ -139,6 +148,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\EmailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\PagesFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

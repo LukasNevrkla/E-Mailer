@@ -11,17 +11,19 @@
    
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" TextBlock.TextAlignment="Center">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center"
+                    TextBlock.TextAlignment="Center" UseLayoutRounding="True">
+            
             <Border Background="{DynamicResource LogScreenBackground}"
                         CornerRadius="20"
                         Padding="15 50 15 15"
-                        Margin="50 50 50 0">
+                        Margin="50 50 50 20">
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="10" BlurRadius="5"/>
                 </Border.Effect>
                 
                 <StackPanel>
-                    <TextBlock Text="Registrace"
+                    <TextBlock Text="{DynamicResource RegisterScreenTitle}"
                              FontSize="{StaticResource LargeFontSize}" 
                              FontFamily="{StaticResource HeaderFont}"
                              Style="{StaticResource BaseStyleBlock}"
@@ -33,7 +35,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Email:" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
+                        <TextBlock Text="{DynamicResource Mail}" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
                         <TextBox Name="email" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
                     </Grid>
 
@@ -43,7 +45,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Rok narození:" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
+                        <TextBlock Text="{DynamicResource YearOfBirth}" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
                         <TextBox  Text="{Binding DateOfBith, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
                     </Grid>
 
@@ -53,18 +55,18 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="Heslo:" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
+                        <TextBlock Text="{DynamicResource Password}" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
                         <PasswordBox x:Name="PasswordBoxText"  
                                          Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalPasswordBox}"/>
                     </Grid>
 
-                    <Button  Name="SignButton" Content="Zaregistrovat" 
+                    <Button  Name="SignButton" Content="{DynamicResource Register}" 
                                 local:IsBusyProperty.Value="{Binding RegisterIsRunning}"
                                 Command="{Binding RegisterCommand}"
                                 CommandParameter="{Binding ElementName=Page}" 
                                 Style="{StaticResource SignButton}"  Margin="0 20 0 0"/>
 
-                    <TextBlock Text="Už mám účet." Style="{StaticResource ClickAbleBlock}" 
+                    <TextBlock Text="{DynamicResource IHaveAccountText}" Style="{StaticResource ClickAbleBlock}" 
                                    FontSize="{StaticResource SmallFontSize}" Margin="10">
                         <TextBlock.InputBindings>
                             <MouseBinding Command="{Binding ToLoginCommand}" MouseAction="LeftClick" />

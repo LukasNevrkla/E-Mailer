@@ -20,72 +20,60 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
-                        <Border Background="Transparent">
-                            <Grid>
-                                <Border Name="ContentMask" Background="{DynamicResource MainBackground}" 
+
+                        <Grid>
+                            <Border x:Name="ContentMask" Background="{DynamicResource MainBackground}" 
                                         CornerRadius="{Binding WindowCornerRadius, FallbackValue=30}">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
-                                    </Border.Effect>
-                                </Border>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
+                                </Border.Effect>
+                            </Border>
 
-                                <!--Window content-->
-                                <Grid>
-                                    <Grid.OpacityMask>
-                                        <VisualBrush Visual="{Binding ElementName=ContentMask}"/>
-                                    </Grid.OpacityMask>
+                            <!--Window content-->
+                            <ContentPresenter ClipToBounds="True" Content="{TemplateBinding Content}" />
 
-                                    <Grid>
-                                        <local:SideMenu DataContext="{Binding AppViewModel, Source={x:Static local:ViewModelLocator.Instance}}"/>
-                                        <ContentPresenter  Content="{TemplateBinding Content}" Margin="70,55,10,10"/>
-                                    </Grid>
-                                </Grid>
+                            <!--Title bar-->
+                            <Grid VerticalAlignment="Top" HorizontalAlignment="Right" 
+                                  PreviewMouseMove="Button_PreviewMouseMove" 
+                                  MouseDown="Grid_MouseDown" Height="45" Width="600">
+                                <Grid.Effect>
+                                    <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
+                                </Grid.Effect>
 
-                                <!--Title bar-->
-                                <Grid VerticalAlignment="Top" HorizontalAlignment="Right">
-                                    <Border Name="Mask" CornerRadius="{Binding MaskCornerRadius, FallbackValue=30}" 
-                                            Background="{DynamicResource MainBackground}">
-                                    </Border>
+                                <Grid.Background>
+                                        <ImageBrush ImageSource="{DynamicResource TitleBar}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                    </Grid.Background>
 
-                                    <Grid MouseDown="Grid_MouseDown" PreviewMouseMove="Button_PreviewMouseMove" 
-                                              Height="45" Width="600">
+                                    <Grid.ColumnDefinitions>
+                                        <!--Icon-->
+                                        <ColumnDefinition Width="*"/>
+                                        <!--Title-->
+                                        <ColumnDefinition Width="4*"/>
+                                        <!--Space-->
+                                        <ColumnDefinition Width="8*"/>
+                                        <!--Buttons-->
+                                        <ColumnDefinition Width="2.75*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                        <Grid.Background>
-                                            <ImageBrush ImageSource="{DynamicResource TitleBar}" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                        </Grid.Background>
+                                    <Image Source="Images/Icon.ico" Margin="10,0,0,0" Style="{StaticResource BaseImage}"/>
 
-                                        <Grid.OpacityMask>
-                                            <VisualBrush Visual="{Binding ElementName=Mask}"/>
-                                        </Grid.OpacityMask>
-
-                                        <Grid.ColumnDefinitions>
-                                            <!--Icon-->
-                                            <ColumnDefinition Width="*"/>
-                                            <!--Title-->
-                                            <ColumnDefinition Width="4*"/>
-                                            <!--Space-->
-                                            <ColumnDefinition Width="8*"/>
-                                            <!--Buttons-->
-                                            <ColumnDefinition Width="2.75*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Image Source="Images/Icon.ico" Margin="10,0,0,0" Style="{StaticResource BaseImage}"/>
-                                        
-
-                                            <Viewbox Grid.Column="1">
-                                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='E-Mailer'}"
+                                    <Viewbox Grid.Column="1">
+                                        <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='E-Mailer'}"
                                                        Style="{StaticResource BaseStyleBlock}"/>
-                                        </Viewbox>
+                                    </Viewbox>
 
-                                        <StackPanel Grid.Column="3" Orientation="Horizontal" Height="39" VerticalAlignment="Top">
-                                            <Button Content="-" Command="{Binding MinimaliseCommand}" Style="{StaticResource WindowControlButton}"/>
-                                            <Button Content="[ ]" Command="{Binding MaximaliseCommand}" Style="{StaticResource WindowControlButton}" />
-                                            <Button Content="X" Command="{Binding CloseCommand}" Style="{StaticResource WindowControlButton}"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </Grid>
+                                <StackPanel Grid.Column="3" Orientation="Horizontal" Height="39" VerticalAlignment="Top">
+                                    <Button Content="-" Command="{Binding MinimaliseCommand}" Style="{StaticResource WindowControlButton}"/>
+                                    <Button Content="[ ]" Command="{Binding MaximaliseCommand}" Style="{StaticResource WindowControlButton}" />
+                                    <Button Content="X" Command="{Binding CloseCommand}" Style="{StaticResource WindowControlButton}"/>
+                                </StackPanel>
                             </Grid>
-                        </Border>
+
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=ContentMask}"/>
+                            </Grid.OpacityMask>
+                        </Grid>
+                        
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -102,10 +90,17 @@
     </WindowChrome.WindowChrome>
 
     <Grid>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"
-               Content="{Binding AppViewModel.CurrentPage, 
-            Source={x:Static local:ViewModelLocator.Instance}, Converter={local:PageConverter}}"/>
-    </Grid>
+
+        <local:SideMenu DataContext="{Binding AppViewModel, 
+                                Source={x:Static local:ViewModelLocator.Instance}}"/>
+
+        <local:PagesFrame DataContext="{Binding AppViewModel.CurrentPage, 
+            Source={x:Static local:ViewModelLocator.Instance}, Converter={local:PageConverter}}" 
+                          d:DataContext=""
+                          CurrentPage="{Binding}"
+                          Margin="70,50,0,0"/>
+    
+        </Grid>
 </Window>
     
     

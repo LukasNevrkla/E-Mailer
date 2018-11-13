@@ -21,10 +21,20 @@ namespace E_Mailer
     {
         #region Public properties
 
-        public PageAnimation StartAnimation { get; set; } = PageAnimation.SlideAndFadeInFromBottom;
-        public PageAnimation EndAnimation { get; set; } = PageAnimation.SlideAndFadeOutToBottom;
+        public PageAnimation StartAnimation { get; set; } = PageAnimation.SlideAndFade;
+        public PageAnimation EndAnimation { get; set; } = PageAnimation.SlideAndFade;
+
+        public SlidePositions StartFromAnimation { get; set; } = SlidePositions.Bottom;
+        public SlidePositions StartToAnimation { get; set; } = SlidePositions.Center;
+        public SlidePositions EndFromAnimation { get; set; } = SlidePositions.Center;
+        public SlidePositions EndToAnimation { get; set; } = SlidePositions.Right;
+
+        public double StartDistance { get; set; } = 0;
+        public double EndDistance { get; set; } = 0;
 
         public float AnimationTime { get; set; } = 1;
+
+        public bool ShouldAnimateOut { get; set; }
 
         #endregion
 
@@ -36,36 +46,55 @@ namespace E_Mailer
                 this.Visibility = Visibility.Collapsed;
 
             this.Loaded += PageLoaded;
-            this.Unloaded += PageUnLoaded;
         }
 
         #endregion
 
-        #region Page loaded
+        #region Page loaded/unloaded
 
         private async void PageLoaded(object sender, RoutedEventArgs r)
         {
-            if (StartAnimation != PageAnimation.None)
-               await RunStartAnimation();
-
-            //await Task.Run(async()=> await RunStartAnimation());
-            //New threat
+            // If is setup to animate out
+            if (ShouldAnimateOut)
+                await RunEndAnimationAsync();
+            else
+                await RunStartAnimationAsync();
         }
 
-        private async void PageUnLoaded(object sender, RoutedEventArgs r)
+        public async Task RunStartAnimationAsync()
         {
-            //if (EndAnimation != PageAnimation.None)
-               // await RunEndAnimation();
+            if (StartAnimation == PageAnimation.None)
+                return;
+
+            switch (StartAnimation)
+            {
+                case PageAnimation.SlideAndFade:
+                    {
+                        if (StartDistance == 0)
+                            StartDistance = this.WindowHeight;
+
+                        await this.PageBasicsAnimation(AnimationTime, StartFromAnimation, StartToAnimation, true, StartDistance);
+                        break;
+                    }
+            }
         }
 
-        public async Task RunStartAnimation()
+        public async Task RunEndAnimationAsync()
         {
-            await this.PageBasicsStartEndAnimation(AnimationTime, true);
-        }
+            if (EndAnimation == PageAnimation.None)
+                return;
 
-        public async Task RunEndAnimation()
-        {
-            await this.PageBasicsStartEndAnimation(AnimationTime, false);
+            switch (StartAnimation)
+            {
+                case PageAnimation.SlideAndFade:
+                    {
+                        if (EndDistance == 0)
+                            EndDistance = this.WindowWidth;
+
+                        await this.PageBasicsAnimation(AnimationTime, EndFromAnimation, EndToAnimation, false, EndDistance);
+                        break;
+                    }
+            }
         }
 
         #endregion

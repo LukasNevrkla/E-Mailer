@@ -13,23 +13,23 @@
                 Converter={local:BooleanToVisiblityConverter}, 
                 ConverterParameter=true}"
           Background="{DynamicResource SideBarBackground}">
-        
-            <Grid.Effect>
-                <DropShadowEffect ShadowDepth="5" Direction="-90"/>
-            </Grid.Effect>
 
-            <UniformGrid Rows="11" Margin="5">
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/User_white.PNG" Command="{Binding UserCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Envelope_white.PNG" Command="{Binding UnopenedCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/OpenEnvelope_white.PNG" Command="{Binding OpenedCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Star_white.PNG" Command="{Binding StarCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Document_white.PNG" Command="{Binding UnfinishedCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Check_white.PNG" Command="{Binding SendedCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Cross_white.PNG" Command="{Binding UnsendedCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Trash_white.PNG" Command="{Binding TrashCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Warning_white.PNG" Command="{Binding SpamCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Folder_white.PNG" Command="{Binding FolderCommand}"/>
-            <local:ImageButton NormalBackgroundImage="../Images/SideBar/Setting_white.PNG" Command="{Binding SettingCommand}"/>
-            </UniformGrid>
-        </Grid>
+        <Grid.Effect>
+            <DropShadowEffect ShadowDepth="5" Direction="-90"/>
+        </Grid.Effect>
+        
+        <ItemsControl Name="ThemeButtons" ItemsSource="{Binding SideMenuButtons}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="11" Margin="5"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ImageButton NormalBackgroundImage="{Binding ImageUri}" 
+                                       Command="{Binding Command}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
 </UserControl>

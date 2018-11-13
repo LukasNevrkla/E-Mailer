@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace E_Mailer
 {
-    public enum PageAnimation
+    public enum SlidePositions
     {
-        None,
-        SlideAndFade
+        Left,
+        Top,
+        Right,
+        Bottom,
+        Center
     }
 }

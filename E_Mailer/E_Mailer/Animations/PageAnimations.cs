@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace E_Mailer.Animations
 {
     public static class PageAnimations
-    {
+    {/*
         /// <summary>
         /// Basics page slide in / out animation.
         /// </summary>
@@ -26,17 +26,43 @@ namespace E_Mailer.Animations
         /// <param name="seconds"></param>
         /// <param name="slideIn"></param>
         /// <returns></returns>
-        public static async Task PageBasicsStartEndAnimation(this Page page, float seconds, bool slideIn)
+        public static async Task PageBasicsStartEndAnimation(this Page page, float seconds, bool slideIn, bool verticaly)
         {
             var sb = new Storyboard();
 
-            sb.AddSlideVerticaly(seconds, page.WindowHeight, slideIn, true);
+            if (verticaly)
+                sb.AddSlideVerticaly(seconds, page.WindowHeight, slideIn, true);
+            else
+                sb.AddSlideHorizontaly(seconds, page.WindowHeight, slideIn, true);
+
             sb.AddFadeEffect(slideIn, slideIn ? seconds : seconds/2);
 
             sb.Begin(page);
             page.Visibility = Visibility.Visible;
 
             await Task.Delay((int)(seconds * 1000));
+        }*/
+
+        public static async Task PageBasicsAnimation(this Page page, float seconds, SlidePositions start, SlidePositions end, bool fadeIn, double distance)
+        {
+            var sb = new Storyboard();
+
+            sb.AddSlide(start, end, seconds, OffsetGenerator(start, distance), OffsetGenerator(end, distance));
+
+            sb.AddFadeEffect(fadeIn, seconds);
+
+            sb.Begin(page);
+            page.Visibility = Visibility.Visible;
+
+            await Task.Delay((int)(seconds * 1000));
+        }
+
+        private static double OffsetGenerator(SlidePositions pos, double offset)
+        {
+            if (pos == SlidePositions.Center)
+                return 0;
+            else
+                return offset;
         }
     }   
 }

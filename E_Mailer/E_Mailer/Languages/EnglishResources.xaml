@@ -3,13 +3,40 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:E_Mailer.Languages">
 
+    
+    <!--#region Generall-->
+
+    <system:String x:Key="Mail">Mail:</system:String>
+    <system:String x:Key="Password">Password:</system:String>
+    <system:String x:Key="YearOfBirth">Year of birth:</system:String>
+
+    <system:String x:Key="WaitText">Plase wait</system:String>
+
+    <!--#endregion-->
+
+
     <!--#region Log screen-->
 
     <system:String x:Key="LogScreenTitle">Log screen</system:String>
-    <system:String x:Key="Mail">Mail:</system:String>
-    <system:String x:Key="Password">Password:</system:String>
     <system:String x:Key="LogIn">Log in</system:String>
     <system:String x:Key="NoAccountText">I do not have an account.</system:String>
+
+    <!--#endregion-->
+
+    <!--#region Register screen-->
+
+    <system:String x:Key="RegisterScreenTitle">Register screen</system:String>
+    <system:String x:Key="Register">Register</system:String>
+    <system:String x:Key="IHaveAccountText">I have an account.</system:String>
+
+    <!--#endregion-->
+
+    <!--#region Settings page-->
+
+    <system:String x:Key="SettingPageTitle">Settings</system:String>
+
+    <system:String x:Key="LanguageSettingTitle">Language settings</system:String>
+    <system:String x:Key="ThemeSettingTitle">Theme settings</system:String>
 
     <!--#endregion-->
 
