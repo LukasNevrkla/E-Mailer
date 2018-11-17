@@ -26,7 +26,7 @@ After start:
   If any of page view models need to show next page, it change the CurrentPage property in AppViewModel.
   All pages inherits from BasePage which takes its view model (by generics). All logic for pages are handelled here.
   
-  [sds](E-Mailer/E_Mailer/E_Mailer/ResourcesManagement/LanguageResources.cs)
+  [sds](E_Mailer/E_Mailer/ResourcesManagement/LanguageResources.cs)
       
   
  
