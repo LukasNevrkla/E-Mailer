@@ -6,11 +6,11 @@ This is the WPF application for read, write and send emails.
 
 ### Design
 
-Whole app is in one window, which using WindowChrome for upgrade its appearance. 
+Whole app is in one [window](E_Mailer/E_Mailer/MainWindow.xaml), which using WindowChrome for upgrade its appearance. 
 
 In the window are this components:
-  - PagesFrame (All pages are showed here.)
-  - SideMenu (Navigation betwen pages. It is viseble after log in.)
+  - [PagesFrame](E_Mailer/E_Mailer/UserControl/PagesFrame.xaml) (All pages are showed here.)
+  - [SideMenu](E_Mailer/E_Mailer/UserControl/SideMenu.xaml) (Navigation betwen pages. It is viseble after log in.)
   
 This app can have one or more themes and languages. 
 
