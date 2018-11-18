@@ -20,8 +20,8 @@ CornerRadius for round edges of window and background.
 
   >I hope to find a better solution in future.
   
-  ### Window content
+### Window content
   
-  Here are just two things:
-    - SideMenu
-    - PagesFrame
+Here are just two things:
+  - SideMenu
+  - PagesFrame
