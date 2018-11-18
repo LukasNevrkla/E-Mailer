@@ -3,6 +3,8 @@
                     xmlns:local="clr-namespace:E_Mailer.Styles">
 
     
+    
+    
     <!--Old window style-->
     <Style TargetType="{x:Type Window}" x:Key="MainWindow2">
         <Setter Property="Template">

@@ -33,7 +33,7 @@
                             <ContentPresenter ClipToBounds="True" Content="{TemplateBinding Content}" />
 
                             <!--Title bar-->
-                            <Grid VerticalAlignment="Top" HorizontalAlignment="Right" 
+                            <Grid Name="TitleBar" VerticalAlignment="Top" HorizontalAlignment="Right" 
                                   PreviewMouseMove="Button_PreviewMouseMove" 
                                   MouseDown="Grid_MouseDown" Height="45" Width="600">
                                 <Grid.Effect>
@@ -85,12 +85,12 @@
             ResizeBorderThickness="10"
             CaptionHeight="0"
             CornerRadius="0"
-            GlassFrameThickness="0"     
+            GlassFrameThickness="0" 
+            
             />
     </WindowChrome.WindowChrome>
 
     <Grid>
-
         <local:SideMenu DataContext="{Binding AppViewModel, 
                                 Source={x:Static local:ViewModelLocator.Instance}}"/>
 

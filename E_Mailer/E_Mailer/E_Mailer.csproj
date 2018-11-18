@@ -86,7 +86,7 @@
     <Compile Include="AttachedProperties\PasswordBoxProperty.cs" />
     <Compile Include="DataModel\AppLanguage.cs" />
     <Compile Include="DataModel\AppTheme.cs" />
-    <Compile Include="DataModel\Gender.cs" />
+    <Compile Include="DataModel\EmailModel.cs" />
     <Compile Include="DataModel\LanguageButtonModel.cs" />
     <Compile Include="DataModel\SideMenuButtonModel.cs" />
     <Compile Include="DataModel\ThemeButtonModel.cs" />
@@ -103,6 +103,9 @@
     </Compile>
     <Compile Include="ResourcesManagement\LanguageResources.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
+    <Compile Include="UserControl\EmailRow.xaml.cs">
+      <DependentUpon>EmailRow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\PagesFrame.xaml.cs">
       <DependentUpon>PagesFrame.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\EmailRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

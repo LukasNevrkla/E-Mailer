@@ -1,9 +1,11 @@
 ﻿using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using E_Mailer.DataModel;
 
 namespace E_Mailer
 {
@@ -17,7 +19,8 @@ namespace E_Mailer
 
         #region Public Properties
 
-
+        public string E { get; set; } = "LDSD";
+        public ObservableCollection<EmailModel> Emails { get; set; } = new ObservableCollection<EmailModel>();
 
         #endregion
 
@@ -31,7 +34,8 @@ namespace E_Mailer
 
         public EmailsViewModel()
         {
-
+            Emails.Add(new EmailModel("sender", "subject", "fullmessage", new DateTime(2018, 11, 13, 19, 55, 00)));
+            Emails.Add(new EmailModel("sender", "subject", "fullmessage", new DateTime(2018, 11, 13, 19, 55, 00)));
         }
 
         #endregion

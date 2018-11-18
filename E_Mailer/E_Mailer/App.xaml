@@ -19,7 +19,7 @@
                                                 BlackSource="Styles/BlackTheme/BlackColours.xaml" />
 
                 <local:LanguageResources En="Languages/EnglishResources.xaml" 
-                                                Cz="Languages/CzechResources.xaml" />
+                                         Cz="Languages/CzechResources.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
