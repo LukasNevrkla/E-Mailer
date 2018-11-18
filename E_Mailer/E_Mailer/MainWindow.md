@@ -1,7 +1,7 @@
 # Main window
 
-- [xaml](E_Mailer/MainWindow.xaml)
-- [code](E_Mailer/MainWindow.xaml.cs)
+- [xaml](MainWindow.xaml)
+- [code](MainWindow.xaml.cs)
 
 ## Structure
 
