@@ -43,6 +43,9 @@
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenPop.NET.2.0.6.1120\lib\net40\OpenPop.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
     </Reference>
@@ -91,6 +94,7 @@
     <Compile Include="DataModel\SideMenuButtonModel.cs" />
     <Compile Include="DataModel\ThemeButtonModel.cs" />
     <Compile Include="Helpers\CommandHelper.cs" />
+    <Compile Include="Helpers\MailClient.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="Pages\EmailsPage.xaml.cs">
       <DependentUpon>EmailsPage.xaml</DependentUpon>

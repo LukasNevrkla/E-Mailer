@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using E_Mailer.Security;
 using System.Windows;
+using E_Mailer.Helpers;
 
 namespace E_Mailer
 {
@@ -14,7 +15,7 @@ namespace E_Mailer
     {
         #region Private properties
 
-        private string email;
+        private string email="nevrkla2.l@email.cz";
         private bool loginIsRunning = false;
 
         #endregion
@@ -67,24 +68,17 @@ namespace E_Mailer
         /// <param name="parameter">The <see cref="SecureString"/> passed in from the view for the users password</param>
         /// <returns></returns>
         public async Task LoginAsync(object parameter)
-        {/*
-            await RunCommandAsync.RunCommand(() => this.LoginIsRunning, async () =>
-            {
-                await Task.Delay(2000);
-
-                var email = this.Email;
-                var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
-            });*/
-            
+        {
             if (LoginIsRunning)
                 return;
             try
             {
                 LoginIsRunning = true;
-                await Task.Delay(3000);
+                await IoC.Get<AppViewModel>().MailClient.ConnectAsync("POP3.email.cz", Email, parameter as IHavePassword);
 
-                var email = this.Email;
-                var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
+                IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.Emails;
+                IoC.Get<AppViewModel>().SideMenuVisibility = true;
+
             }
             catch { }
             finally { LoginIsRunning = false; }

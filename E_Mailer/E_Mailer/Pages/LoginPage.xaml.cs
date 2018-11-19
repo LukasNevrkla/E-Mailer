@@ -35,6 +35,9 @@ namespace E_Mailer
 
         void SetButton()
         {
+            if (PasswordBoxText == null)
+                return;
+
             bool enable = email.Text.Length > 0 && PasswordBoxText.Password.Length > 0;
             SignButton.IsEnabled = enable;
         }

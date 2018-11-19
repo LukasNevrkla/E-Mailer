@@ -5,11 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:E_Mailer"
              mc:Ignorable="d" 
-             d:DesignHeight="35" d:DesignWidth="800">
+             d:DesignHeight="35" d:DesignWidth="750">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseStyleBlock}">
             <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="{StaticResource NormalFontSize}"/>
         </Style>
     </UserControl.Resources>
 
@@ -26,15 +27,15 @@
                 <ColumnDefinition Width="35" />
                 <ColumnDefinition />
                 <ColumnDefinition Width="35" />
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Text="From" Grid.Column="1"/>
-            <CheckBox Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Text="Author-qqqqqqqqqqqqqqqqq" Grid.Column="3" />
-            <TextBlock Text="14/5 2018" Grid.Column="4"/>
+            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Sender}" Grid.Column="1"/>
+            <CheckBox IsChecked="{Binding HasStar, Mode=TwoWay}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Subject}" Grid.Column="3" />
+            <TextBlock Text="{Binding Sended_prewiew}" Grid.Column="4"/>
         </Grid>
     </Grid>
 </UserControl>

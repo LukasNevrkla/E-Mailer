@@ -36,7 +36,10 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Text="{DynamicResource Mail}" Grid.Column="0" Style="{StaticResource BaseStyleBlock}"/>
-                        <TextBox Name="email" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="email_TextChanged" Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NormalTextBox}"/>
+                        <TextBox Margin="10,0" Name="email" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                 TextChanged="email_TextChanged" Grid.Column="1" HorizontalAlignment="Stretch" 
+                                 Style="{StaticResource NormalTextBox}"/>
+                       
                     </Grid>
 
                     <Grid>

@@ -39,6 +39,10 @@ namespace E_Mailer
 
         public ObservableCollection<SideMenuButtonModel> SideMenuButtons { get; set; } = new ObservableCollection<SideMenuButtonModel>();
 
+        //public OpenPop.Pop3.Pop3Client Client { get; set; }
+
+        public MailClient MailClient { get; set; }
+
         #endregion
 
         #region Commands
@@ -50,6 +54,7 @@ namespace E_Mailer
 
         public AppViewModel()
         {
+            MailClient = new MailClient();
             InitializeSideMenu();
         }
 

@@ -13,7 +13,7 @@
         ResizeMode="CanResize"
         MinHeight="450"
         MinWidth="800"
-        Title="E-Mailer" Height="450" Width="800" Icon="Images/Icon.ico">
+        Title="E-Mailer" Height="600" Width="1200" Icon="Images/Icon.ico">
 
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">

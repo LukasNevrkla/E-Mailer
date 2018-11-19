@@ -15,6 +15,7 @@ namespace E_Mailer.DataModel
         public string Subject { get; set; }
         public string MessagePreview { get; set; }
         public string FullMessage { get; set; }
+        public string Sended_prewiew { get; set; }
         public DateTime Sended { get; set; }
 
         public EmailModel(string sender, string subject, string fullMessage, DateTime sended, bool hasStar = false)
@@ -23,6 +24,7 @@ namespace E_Mailer.DataModel
             Subject = subject;
             //MessagePreview = fullMessage.Substring(0,50);
             FullMessage = fullMessage;
+            Sended_prewiew = sended.ToShortDateString();
             Sended = sended;
         }
     }

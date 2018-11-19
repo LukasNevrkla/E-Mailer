@@ -7,6 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using E_Mailer.DataModel;
 
+using System.Net;
+using System.Net.Mail;
+using OpenPop.Pop3;
+using OpenPop.Mime;
+
 namespace E_Mailer
 {
     public class EmailsViewModel : BindableBase
@@ -19,7 +24,6 @@ namespace E_Mailer
 
         #region Public Properties
 
-        public string E { get; set; } = "LDSD";
         public ObservableCollection<EmailModel> Emails { get; set; } = new ObservableCollection<EmailModel>();
 
         #endregion
@@ -34,10 +38,19 @@ namespace E_Mailer
 
         public EmailsViewModel()
         {
-            Emails.Add(new EmailModel("sender", "subject", "fullmessage", new DateTime(2018, 11, 13, 19, 55, 00)));
-            Emails.Add(new EmailModel("sender", "subject", "fullmessage", new DateTime(2018, 11, 13, 19, 55, 00)));
+            App.Current.Dispatcher.Invoke(() => LoadLastEmailsAsync(10));
         }
 
         #endregion
+
+        public async void LoadLastEmailsAsync(int cnt)
+        {
+            List<EmailModel> emails = await IoC.Get<AppViewModel>().MailClient.GetLastEmailsAsync(cnt);
+
+            foreach (EmailModel email in emails)
+            {
+                Emails.Add(email);
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@
                   ItemsSource="{Binding}" DataContext="{Binding Emails}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:EmailRow/>
+                    <local:EmailRow DataContext="{Binding}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
