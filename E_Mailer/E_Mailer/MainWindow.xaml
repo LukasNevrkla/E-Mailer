@@ -34,15 +34,20 @@
 
                             <!--Title bar-->
                             <Grid Name="TitleBar" VerticalAlignment="Top" HorizontalAlignment="Right" 
-                                  PreviewMouseMove="Button_PreviewMouseMove" 
-                                  MouseDown="Grid_MouseDown" Height="45" Width="600">
+                                   Height="45" Width="600">
+
                                 <Grid.Effect>
                                     <DropShadowEffect ShadowDepth="10" Opacity="0.4"/>
                                 </Grid.Effect>
 
-                                <Grid.Background>
-                                        <ImageBrush ImageSource="{DynamicResource TitleBar}" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                    </Grid.Background>
+                                <local:TransparentClickAbleImage Source="{DynamicResource TitleBar}" 
+                                                                 RenderOptions.BitmapScalingMode="HighQuality" 
+                                                                 Stretch="Fill"
+                                                                 PreviewMouseMove="Button_PreviewMouseMove" 
+                                                                 MouseDown="Grid_MouseDown"/>
+
+                                <Grid>
+                                   
 
                                     <Grid.ColumnDefinitions>
                                         <!--Icon-->
@@ -55,18 +60,22 @@
                                         <ColumnDefinition Width="2.75*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Source="Images/Icon.ico" Margin="10,0,0,0" Style="{StaticResource BaseImage}"/>
 
+                                    <Image Source="Images/Icon.ico" Margin="10,0,0,0" 
+                                               Style="{StaticResource BaseImage}" IsHitTestVisible="False"/>
+
+                                    <!--IsHitTestVisible="False" ... background image can be clicked trought-->
                                     <Viewbox Grid.Column="1">
                                         <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='E-Mailer'}"
-                                                       Style="{StaticResource BaseStyleBlock}"/>
+                                                           Style="{StaticResource BaseStyleBlock}" IsHitTestVisible="False"/>
                                     </Viewbox>
 
-                                <StackPanel Grid.Column="3" Orientation="Horizontal" Height="39" VerticalAlignment="Top">
-                                    <Button Content="-" Command="{Binding MinimaliseCommand}" Style="{StaticResource WindowControlButton}"/>
-                                    <Button Content="[ ]" Command="{Binding MaximaliseCommand}" Style="{StaticResource WindowControlButton}" />
-                                    <Button Content="X" Command="{Binding CloseCommand}" Style="{StaticResource WindowControlButton}"/>
-                                </StackPanel>
+                                    <StackPanel Grid.Column="3" Orientation="Horizontal" Height="39" VerticalAlignment="Top">
+                                        <Button Content="-" Command="{Binding MinimaliseCommand}" Style="{StaticResource WindowControlButton}"/>
+                                        <Button Content="[ ]" Command="{Binding MaximaliseCommand}" Style="{StaticResource WindowControlButton}" />
+                                        <Button Content="X" Command="{Binding CloseCommand}" Style="{StaticResource WindowControlButton}"/>
+                                    </StackPanel>
+                                </Grid>
                             </Grid>
 
                             <Grid.OpacityMask>
@@ -99,8 +108,7 @@
                           d:DataContext=""
                           CurrentPage="{Binding}"
                           Margin="70,50,0,0"/>
-    
-        </Grid>
+    </Grid>
 </Window>
     
     

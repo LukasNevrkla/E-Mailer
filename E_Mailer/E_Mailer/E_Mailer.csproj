@@ -87,6 +87,7 @@
     <Compile Include="AttachedProperties\NoHistoryFrame.cs" />
     <Compile Include="AttachedProperties\NormalButton.cs" />
     <Compile Include="AttachedProperties\PasswordBoxProperty.cs" />
+    <Compile Include="AttachedProperties\WebBrowserHelper.cs" />
     <Compile Include="DataModel\AppLanguage.cs" />
     <Compile Include="DataModel\AppTheme.cs" />
     <Compile Include="DataModel\EmailModel.cs" />
@@ -102,11 +103,18 @@
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SelectedEmailPage.xaml.cs">
+      <DependentUpon>SelectedEmailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ResourcesManagement\LanguageResources.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
+    <Compile Include="TransparentWebBrowserWindow.xaml.cs">
+      <DependentUpon>TransparentWebBrowserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpgradedControll\TransparentClickAbleImage.cs" />
     <Compile Include="UserControl\EmailRow.xaml.cs">
       <DependentUpon>EmailRow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +137,7 @@
     <Compile Include="ViewModel\Base\IHavePassword.cs" />
     <Compile Include="ViewModel\Base\ParameterizedRelayCommand.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\PagesViewModels\SelectedEmailViewModel.cs" />
     <Compile Include="ViewModel\PagesViewModels\EmailsViewModel.cs" />
     <Compile Include="ViewModel\PagesViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModel\PagesViewModels\LoginViewModel.cs" />
@@ -167,6 +176,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SelectedEmailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransparentWebBrowserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

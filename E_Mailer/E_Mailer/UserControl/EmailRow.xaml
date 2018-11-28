@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:E_Mailer"
+             xmlns:prop="clr-namespace:E_Mailer.AttachedProperties"
              mc:Ignorable="d" 
-             d:DesignHeight="35" d:DesignWidth="750">
+             d:DesignHeight="200" d:DesignWidth="750">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseStyleBlock}">
@@ -14,28 +15,56 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Margin="10,2" x:Name="LayoutRoot">
+    <Grid Margin="10,0" x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="{Binding Height}"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Height="35" VerticalAlignment="Top" Margin="0,2.5">
+            <Border Background="White" CornerRadius="15" BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect Direction="320" ShadowDepth="2"/>
+                </Border.Effect>
+            </Border>
 
-        <Border Background="White" CornerRadius="15" BorderThickness="1">
-            <Border.Effect>
-                <DropShadowEffect Direction="320" ShadowDepth="2"/>
-            </Border.Effect>
-        </Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="35" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35" />
-                <ColumnDefinition />
-                <ColumnDefinition Width="35" />
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Sender}" Grid.Column="1"/>
+                <CheckBox IsChecked="{Binding HasStar, Mode=TwoWay}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Subject}" Grid.Column="3" />
+                <TextBlock Text="{Binding Sended_prewiew}" Grid.Column="4"/>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="1" Margin="0,2.5" Name="MessagePreview">
+            <Border Background="White" CornerRadius="15" BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect Direction="320" ShadowDepth="2"/>
+                </Border.Effect>
+            </Border>
 
-            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Sender}" Grid.Column="1"/>
-            <CheckBox IsChecked="{Binding HasStar, Mode=TwoWay}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding Subject}" Grid.Column="3" />
-            <TextBlock Text="{Binding Sended_prewiew}" Grid.Column="4"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" MinHeight="30"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+                <!--Works only if allowTransparecy=false.... wtf...sdf gaksdonhg ie g45e
+                
+                <WebBrowser Name="WebB" Source="http://www.google.de/" prop:WebBrowserHelper.Body="{Binding FullMessage}" 
+                             Grid.Row="1"/> -->
+
+                <Border Name="bTarget" Grid.Row="1"/>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

@@ -6,6 +6,7 @@ namespace E_Mailer
         Login,
         Register,
         Settings,
-        Emails
+        Emails,
+        SelectedEmail
     }
 }

@@ -26,6 +26,9 @@ namespace E_Mailer
                 case ApplicationPages.Emails:
                     return new EmailsPage();
 
+                case ApplicationPages.SelectedEmail:
+                    return new SelectedEmailPage();
+
                 default:
                     Debugger.Break();
                     return null;

@@ -18,7 +18,7 @@ namespace E_Mailer
     {
         #region Private properties
 
-
+        public EmailModel selectedItem;
 
         #endregion
 
@@ -26,11 +26,17 @@ namespace E_Mailer
 
         public ObservableCollection<EmailModel> Emails { get; set; } = new ObservableCollection<EmailModel>();
 
+        public EmailModel SelectedItem
+        {
+            get { return selectedItem; }
+            set { selectedItem = value; ItemIsSelected(value); }
+        }
+
         #endregion
 
         #region Commands
 
-
+        public RelayCommand SelectedChangedCommand { get; set; }
 
         #endregion
 
@@ -38,6 +44,7 @@ namespace E_Mailer
 
         public EmailsViewModel()
         {
+            SelectedChangedCommand = new RelayCommand(() => ItemSelectedChanged());
             App.Current.Dispatcher.Invoke(() => LoadLastEmailsAsync(10));
         }
 
@@ -51,6 +58,24 @@ namespace E_Mailer
             {
                 Emails.Add(email);
             }
+        }
+
+        private void ItemIsSelected(object email)
+        {
+            if (email == null)
+                return;
+            EmailModel e = (EmailModel)email;
+
+            IoC.Get<AppViewModel>().CurrentPage = ApplicationPages.SelectedEmail;
+            IoC.Get<AppViewModel>().SelectedEmail = e;
+        }
+
+        private void ItemSelectedChanged()
+        {
+            if (SelectedItem.IsOpened)
+                SelectedItem.IsOpened = false;
+            else
+                SelectedItem.IsOpened = true;
         }
     }
 }

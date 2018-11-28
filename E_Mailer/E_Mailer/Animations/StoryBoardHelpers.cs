@@ -41,19 +41,20 @@ namespace E_Mailer.Animations
             switch(position)
             {
                 case SlidePositions.Left:
-                    result = new Thickness(-offset, 0, 0, 0);
+                    result = new Thickness(-offset, 0, offset, 0);
                     break;
 
                 case SlidePositions.Top:
-                    result = new Thickness(0,-offset, 0, 0);
+                    result = new Thickness(0,-offset, 0, offset);
                     break;
 
                 case SlidePositions.Right:
-                    result = new Thickness(0, 0, -offset, 0);
+                    // result = new Thickness(0, 0, -offset, 0);
+                    result = new Thickness(offset, 0, -offset, 0);
                     break;
 
                 case SlidePositions.Bottom:
-                    result = new Thickness(0, 0, 0, -offset);
+                    result = new Thickness(0, offset, 0, -offset);
                     break;
 
                 case SlidePositions.Center:

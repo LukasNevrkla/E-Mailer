@@ -23,6 +23,8 @@ namespace E_Mailer
 
             Current.MainWindow = new MainWindow();
             Current.MainWindow.Show();
+
+            IoC.Get<AppViewModel>().MainWindow = Current.MainWindow;
         }
     }
 }

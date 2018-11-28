@@ -1,4 +1,5 @@
 ﻿using E_Mailer.Properties;
+using E_Mailer.DataModel;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using E_Mailer.Helpers;
 using System.Collections.ObjectModel;
+
 
 namespace E_Mailer
 {
@@ -39,9 +41,12 @@ namespace E_Mailer
 
         public ObservableCollection<SideMenuButtonModel> SideMenuButtons { get; set; } = new ObservableCollection<SideMenuButtonModel>();
 
-        //public OpenPop.Pop3.Pop3Client Client { get; set; }
-
         public MailClient MailClient { get; set; }
+
+        //For web browser on transparent window
+        public Window MainWindow { get; set; }
+
+        public EmailModel SelectedEmail { get; set; }
 
         #endregion
 

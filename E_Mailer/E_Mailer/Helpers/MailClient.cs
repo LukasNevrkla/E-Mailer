@@ -7,6 +7,7 @@ using E_Mailer.DataModel;
 using E_Mailer.Security;
 using OpenPop.Mime;
 using OpenPop.Pop3;
+using System.IO;
 
 namespace E_Mailer.Helpers
 {
@@ -43,6 +44,7 @@ namespace E_Mailer.Helpers
                 if (Client == null)
                     return null;
  
+
                 var count = Client.GetMessageCount();
 
                 try
@@ -52,7 +54,7 @@ namespace E_Mailer.Helpers
                         Message message = Client.GetMessage(count - i);
                         emails.Add(new EmailModel(message.Headers.From.DisplayName.ToString(),
                                                   message.Headers.Subject.ToString(),
-                                                  message.ToString(),
+                                                  GetFullMessage(message),
                                                   message.Headers.DateSent));
                     }
                 }
@@ -62,6 +64,39 @@ namespace E_Mailer.Helpers
                 }
                 return emails;
             });
+        }
+
+        public string GetFullMessage(Message message)
+        {/*
+            string x=message.MessagePart.ContentType.MediaType;
+            message.
+            
+            MessagePart part = message.FindFirstHtmlVersion();
+            return new FileInfo("test.eml");
+            //k.Save(new FileInfo("test.eml"));
+            */
+
+            StringBuilder builder = new StringBuilder();
+
+                MessagePart plainText = message.FindFirstPlainTextVersion();
+                if (plainText != null)
+                {
+                    // We found some plaintext!
+                    builder.Append(plainText.GetBodyAsText());
+                }
+                else
+                {
+                    // Might include a part holding html instead
+                    MessagePart html = message.FindFirstHtmlVersion();
+                    if (html != null)
+                    {
+                        // We found some html!
+                        builder.Append(html.GetBodyAsText());
+                    }
+                }
+            //System.Windows.MessageBox.Show(builder.ToString());
+
+            return builder.ToString();
         }
     }
 }

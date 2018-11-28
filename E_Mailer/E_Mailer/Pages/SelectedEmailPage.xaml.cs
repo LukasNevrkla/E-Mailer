@@ -15,17 +15,14 @@ using System.Windows.Shapes;
 
 namespace E_Mailer
 {
-    public partial class EmailsPage : BasePage <EmailsViewModel>
+    /// <summary>
+    /// Interakční logika pro SelectedEmailPage.xaml
+    /// </summary>
+    public partial class SelectedEmailPage : BasePage<SelectedEmailViewModel>
     {
-        public EmailsPage()
+        public SelectedEmailPage()
         {
             InitializeComponent();
-        }
-
-        private void ListViewItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            EmailsViewModel vm = this.DataContext as EmailsViewModel;
-            vm.SelectedChangedCommand.Execute(null);
         }
     }
 }

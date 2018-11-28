@@ -23,6 +23,14 @@ namespace E_Mailer
         public EmailRow()
         {
             InitializeComponent();
+
+            MessagePreview.SizeChanged += SizeChanged;
+        }
+
+
+        private void SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+             //new TransparentWebBrowserWindow(bTarget);
         }
     }
 }

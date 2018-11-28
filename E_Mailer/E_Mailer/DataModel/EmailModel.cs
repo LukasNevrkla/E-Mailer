@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Mailer.DataModel
 {
-    public class EmailModel
+    public class EmailModel: BindableBase
     {
         public bool IsSelected { get; set; } = false;
         public bool HasStar { get; set; }
@@ -17,6 +18,27 @@ namespace E_Mailer.DataModel
         public string FullMessage { get; set; }
         public string Sended_prewiew { get; set; }
         public DateTime Sended { get; set; }
+
+        private bool isOpened=false;
+        public bool IsOpened
+        {
+            get { return isOpened; }
+            set
+            {
+                SetProperty(ref isOpened, value);
+                Height = (isOpened) ? 100 : 0;
+            }
+        }
+
+        private int height = 0;
+        public int Height
+        {
+            get { return height; }
+            set
+            {
+                SetProperty(ref height, value);
+            }
+        }
 
         public EmailModel(string sender, string subject, string fullMessage, DateTime sended, bool hasStar = false)
         {

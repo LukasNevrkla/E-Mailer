@@ -14,12 +14,20 @@
         <ListView HorizontalContentAlignment="Stretch"
                   BorderThickness="0" Margin="10" 
                   Background="Transparent"
-                  ItemsSource="{Binding}" DataContext="{Binding Emails}">
+                  ItemsSource="{Binding Emails}"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:EmailRow DataContext="{Binding}"/>
+                    <local:EmailRow DataContext="{Binding}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
+            
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseLeftButtonUp" Handler="ListViewItem_MouseLeftButtonUp" />
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
     </Grid>
 </local:BasePage>
